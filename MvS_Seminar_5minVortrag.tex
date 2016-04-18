@@ -94,7 +94,15 @@
 \begin{frame}
   \frametitle{ Epistemische Logik }
   \begin{itemize}
-  	\item Logikoperatoren: K, E, C (Wissensoperator, "Jeder weiß"-Operator, Gemeinsames Wissen)
+  	\item Das Konzept von \textit{möglichen Welten} wird genutzt % da Prozesse nur Vermutungen über die Zustände anderer Prozesse aufstellen kann
+  	\item Es werden zusätzliche Operatoren eingeführt: %um über Informationen über Wissen im System darzustellen
+  	\begin{itemize}
+  		\item Wissensoperator: $K_i(\phi)$ %Der Prozess i weiß, dass Phi gilt, wenn in allen zum eigenen Zustand konsistenten möglichen Welten Phi gilt
+  		\item Jeder weiß:  $E^i(\phi)$\\
+  		$E^1(\phi) = \bigwedge_{i\in N}K_i(\phi)$\\
+  		$E^2(\phi) = E(E^1(\phi))$ etc.
+  		\item Gemeinsames Wissen: $C(\phi) = \bigwedge_{j\in Z^*}E^j(\phi)$
+  	\end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -104,10 +112,10 @@
 \begin{frame}
   \frametitle{ Konsens-Problem asynchroner Systeme }
     \begin{theorem}
-    	Es existiert kein Kommunikationsprotokoll für ein Nachrichtensystem ohne begrenzte Nachrichtenlaufzeit mit dem gemeinsames Wissen zweier Prozesse über einen Binärwert erreicht werden kann.
+    	Es existiert kein Kommunikationsprotokoll für ein Nachrichtensystem ohne begrenzte Nachrichtenlaufzeit mit dem \textbf{gemeinsames Wissen} zweier Prozesse über einen Binärwert erreicht werden kann.
     \end{theorem}
   \begin{itemize}
-	\item Eine schwächere Dedfinition von gemeinsamen Wissen muss genutzt werden.
+	\item Eine schwächere Definition von gemeinsamen Wissen muss genutzt werden.
   \end{itemize}	
 \end{frame}
 
