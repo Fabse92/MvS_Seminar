@@ -1,0 +1,19 @@
+\section{Logik des Wissens}
+\label{Logik}
+Damit möglichst intuitiv Logik über das Wissen in verteilten Systemen betrieben werden kann, werden Logikoperatoren aus der epistemischen Logik genutzt, mit denen eine Logik (bspw. Aussagenlogik) erweitert werden kann. 
+Fagin et al. führen dazu zunächst das Konzept von \textbf{möglichen Welten} ein (vgl. \cite{fagin2003reasoning} S.15 ff.). 
+Da ein einzelner Prozess in einem verteilten System nur eingeschränkte Informationen über die Zustände in den anderen Prozessen hat, kann es verschiedene Systemzustände geben, die er nicht voneinander unterscheiden kann. Die möglichen Welten $P_i$ werden daher definiert als: Die Vereinigung aller Systemzustände, die mit den vorhanden Informationen eines Prozesses $i$ vereinbar sind.
+Mit Hilfe der möglichen Welten können Aussagen über eine Formel $\phi$ gemacht werden:
+Ein Prozess $i$ \textit{weiß}, dass $\phi$ gilt ($K_i\phi$), wenn in allen Welten, die er für möglich hält, $\phi$ gilt.
+%Die Syntax zur Wissenslogik kann entsprechend ausgedrückt werden als:
+%\begin{align*}
+%\phi &::= p | \neg\phi_1 | \phi_1 \land \phi_2 | K_i\phi
+%\end{align*}
+%Wobei $p\in P$ eine atomare Aussagenlogische Formel ist, $\phi_1$ und $\phi_2$ sind Formeln unserer Wissenslogik und $i \in \{1,...,n\}$ in einem verteilten System mit $n$ Prozessen.
+Die Semantik zu den Wissensoperatoren kann mit Hilfe von \textbf{Kripke-Modellen} definiert werden (vgl. \cite{kshemkalyani2011distributed} S. 285 f.).
+Ein Kripke-Modell $M$ zu einem verteilten System mit $n$ Prozessen und einer Menge atomarer Aussagen $\Phi$ ist ein Tupel $(S,\pi,\mathcal{K}_1,...,\mathcal{K}_n)$ mit der Menge an möglichen Systemzuständen $S$, der Belegung $\pi$, die jeder atomaren Aussage einen Wahrheitswert zuordnet ($\forall s\in S, \pi(s):\Phi \rightarrow \{0,1\}$) und der binären Relation $\mathcal{K}_i$ auf $S$, die jedem Prozess $i$ die Menge von Systemzuständen zuordnet, die er nicht vom tatsächlichen unterscheiden kann.\medskip
+
+Damit ergeben sich folgende Definitionen der Wissensoperatoren:
+\begin{itemize}
+	\item (M,s) $\vDash \phi$
+\end{itemize}

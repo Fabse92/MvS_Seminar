@@ -1,0 +1,48 @@
+\section{Einleitung}
+Im Gegensatz zu einem einfachen zentralisierten System müssen in einem verteilten System Entscheidungen auf Grundlage unvollständiger Informationen getroffen werden.
+Die einzelnen Prozesse des verteilten Systems können nicht ohne Einschränkungen Kenntnis über die Zustände der anderen Prozesse erlangen.
+So muss der Informationsaustausch zweier Prozesse mit Hilfe von Nachrichten durchgeführt werden. Diese Nachrichten haben eine endliche, oft unbekannte, Laufzeit.
+Entscheidungen eines Prozesses müssen daher mit den unvollständigen, veralteten oder schlicht falschen lokalen Informationen über das Gesamtsystem getroffen werden.\\
+In dieser Arbeit soll betrachtet werden wie lokale Prozesse mit Hilfe von Wissenslogik Informationen über das System ableiten und unter welchen Umständen sie korrekte Entscheidungen treffen können.
+
+\subsection{Motivation: Das \textit{cheating husbands}-Rätsel}
+Um das Konzept von verteiltem Wissen zu veranschaulichen nutzen Moses et al. \cite{moses1986cheating} das \textit{cheating husbands}-Rätsel (vgl. \cite{moses1986cheating} S. 168 ff.).
+Dabei handelt es sich um ein Induktions-Rätsel von dem es viele Varianten gibt (\textit{unfaithful wives problem}, \textit{blue eyes problem}, \textit{muddy children puzzle}). Auch wir werden dieses Beispiel als durchgehende Veranschaulichung der Theorie verwenden.\\
+Das Rätsel wird im Rahmen einer Geschichte aufgestellt: Die Königin Henrietta I von Atlantis möchte das Untreue-Problem in der Stadt Mamajorca lösen unter dem die Frauen leiden.
+Folgende Informationen können als gemeinsames Wissen unter der Bevölkerung der Stadt vorausgesetzt werden:
+\begin{itemize}
+	\item Die Königin sagt die Wahrheit.
+	\item Alle Ehefrauen gehorchen der Königin.
+	\item Die Ehefrauen sind perfekte Logiker.
+	\item Ein Pistolenschuss kann in der ganzen Stadt gehört werden.
+	\item Keine Ehefrau weiß, ob ihr Ehegatte sie betrügt.
+	\item Jede Ehefrau weiß welche der anderen Frauen betrogen worden sind.
+\end{itemize}
+Um das Untreue-Problem zu lösen lässt Henrietta I alle Ehefrauen der Stadt zusammenkommen und verkündet dann vor ihnen, dass es mindestens einen untreuen Ehemann gibt ($n \ge 1$).
+Die Königin verbietet (aufgrund der Etikette), dass die Ehefrauen miteinander über die untreuen Ehemänner reden.
+Sollte eine Ehefrau jedoch herausfinden, dass ihr Gatte untreu war, so muss sie ihn am selben Tag um Mitternacht erschießen.\medskip
+
+Folgendes kann gezeigt werden:\\
+Wenn es $n$ untreue Ehemänner zum Zeitpunkt der Verkündung von Henrietta I gab, so werden diese alle um Mitternacht des n-ten folgenden Tages (einschließlich des Tages der Verkündigung) erschossen.\medskip
+
+Beweis mittels vollständiger Induktion über die Anzahl der untreuen Ehemänner:\\
+\textbf{Induktionsanfang:} Angenommen es gäbe einen ($n=1$) untreuen Ehemann. So gäbe es eine Ehefrau, die keine andere Ehefrau kennen würde, die betrogen wurde. Da es mindestens einen untreuen Ehemann gibt kann sie darauf schließen, dass es ihr Mann sein muss. Dementsprechend wird der eine untreue Ehemann noch am selben Tag (also am ersten folgenden Tag nach der Verkündigung) um Mitternacht erschossen.\\
+\textbf{Induktionsvoraussetzung:} Die Behauptung gelte für den Fall mit $n$ untreuen Ehemännern.\\
+\textbf{Induktionsschluss:} Gezeigt werden muss nun, dass die Behauptung auch für $n+1$ untreue Ehemänner gilt.
+Jede betrogene Ehefrau weiß in diesem Fall von $n$ betrogenen Ehefrauen in der Stadt. Die nicht betrogenen Ehefrauen hingegen kennen alle $n+1$ betrogenen Ehefrauen.
+Aufgrund der Induktionsvoraussetzung wissen die betrogenen Ehefrauen, dass alle ihr bekannten betrogenen Ehefrauen ihre Männer in der n-ten Nacht erschossen hätten, wenn es tatsächlich nur $n$ untreue Ehemänner gibt.
+Da dies nicht geschehen ist, wissen die betrogenen Ehefrauen, dass es $n+1$ untreue Ehemänner geben muss und das ihrer einer davon ist.
+Die betrogenen Ehefrauen mussten dementsprechend darauf warten, ob in der n-ten Nacht Schüsse zu  hören sind, um zu entscheiden, ob sie ihren Ehemann erschießen müssen.
+Nach der n-ten Nacht weiß jede betrogene Ehefrau, dass ihr Mann sie betrogen hat, sodass alle untreuen Ehemänner in der n+1-ten Nacht um Mitternacht erschossen werden. $\square$
+
+Entscheidend bei diesem Szenario ist, dass die Königin die Information, dass es mindestens einen untreuen Ehemann gibt, zu gemeinsamen Wissen macht.
+Ohne dieses Wissen gilt der Induktionsanfang nicht; tatsächlich werden die Ehefrauen nie herausfinden, ob ihr Ehemann untreu war, wenn diese Information nicht allgemein bekannt gemacht wird (vgl. \cite{kshemkalyani2011distributed} S.283).
+
+\subsection{Probleme und Fragen}
+Eines der zentralen Probleme besteht in der Unmöglichkeit gemeinsames Wissen mehrerer Prozesse in einem asynchronen System herzustellen, wenn die Prozesse fehlerhaft handeln können (vgl.\cite{kshemkalyani2011distributed} S. 293 f.). Um mit asynchronen Systemen in der Praxis arbeiten zu können, nutzt man daher Verfahren die eingeschränktes gemeinsames Wissen ermöglichen.\\
+Weitere Fragestellungen des Themas untersuchen wie die Art des Nachrichtensystems das Wissen der lokalen Prozesse beeinflusst und wie die Informationsbeziehungen zwischen den Prozessen visuell dargestellt werden können.
+
+\subsection{Aufbau der Arbeit}
+Im Kapitel \ref{Logik} werden zunächst die Logikoperatoren eingeführt, mit denen in verteilten System Wissen abgeleitet werden kann.
+Um die Beziehungen zwischen den Prozessen und die Entwicklung von Wissen in verteilten Systemen intuitiv darzustellen, werden in Kapitel \ref{Kripke-Modelle} Kripke-Modelle genutzt. Kapitel \ref{sync_vs_async} geht der Frage nach, wie das ableitbare Wissen in einem System davon abhängt, ob das Nachrichtensystem synchron oder asynchron funktioniert. Um das Konsens-Problem zu vermeiden werden in Kapitel \ref{GemeinsamesWissen} schwächere Definitionen von gemeinsamen Wissen vorgestellt.
+Abschließend wird die Arbeit in Kapitel \ref{Zusammenfassung} zusammengefasst.
