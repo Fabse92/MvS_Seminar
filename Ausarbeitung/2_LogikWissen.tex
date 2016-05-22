@@ -15,5 +15,13 @@ Ein Kripke-Modell $M$ zu einem verteilten System mit $n$ Prozessen und einer Men
 
 Damit ergeben sich folgende Definitionen der Wissensoperatoren:
 \begin{itemize}
-	\item (M,s) $\vDash \phi$
+\item (M,s) $\vDash \phi$, falls $\pi(s)(\phi) = true$
+\item (M,s) $\vDash K_i(\phi)$, falls für alle t mit $(s,t) \in \mathcal{K}_i $ gilt: (M,t) $\vDash \phi$
+\item (M,s) $\vDash E^1(\phi)$, falls (M,s) $\vDash\land_{i\in N}K_i(\phi)$
+\item (M,s) $\vDash E^{k+1}(\phi)$ mit $k\ge 1$, falls (M,s) $\vDash\land_{i\in N}K_i(E^k(\phi))$
+\item (M,s) $\vDash C(\phi)$, falls (M,s) $\vDash\land_{k\in Z^*}E^k(\phi)$
 \end{itemize}
+
+Dabei ist K der bereits erwähnte Wissensoperator, E der \textit{jeder weiß}-Operator und C der \textit{gemeinsames Wissen}-Operator.
+Der \textit{jeder weiß}-Operator wird rekursiv für höhere Ebenen definiert: $E^1(\phi)$ bedeutet, dass jeder Prozess im System weiß, dass $\phi$ gilt; $E^2(\phi)$ bedeutet, dass jeder Prozess weiß, dass jeder Prozess weiß, dass $\phi$ gilt, und so weiter.
+Der \textit{gemeinsames Wissen}-Operator kann intuitiv so verstanden werden, dass es definitiv für keinen Prozess einen Zweifel daran gibt, dass den anderen Prozessen $\phi$ bekannt ist. Dies gilt beispielsweise im \textit{cheating husbands}-Rätsel für die Information, dass es mindestens einen untreuen Ehemann gibt, nachdem die Königin dies in der Gegenwart aller Ehefrauen verkündet hat. 
