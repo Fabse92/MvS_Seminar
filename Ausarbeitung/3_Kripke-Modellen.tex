@@ -4,7 +4,7 @@ Das Kripke-Modell eines verteilten Systems mit kleiner Anzahl Prozesse kann intu
 Der Graph ist dementsprechend bidirektional und reflexiv.\\
 Mit Hilfe der Erreichbarkeit können die Definitionen zu den \textit{jeder-weiß}- und den gemeinsames Wissen-Operator auf diese Graphen übertragen werden:
 \begin{itemize}
-	\item Ein Zustand t kann vom Zustand s in k Schritten erreicht werden, wenn es eine Folge von Zuständen $s_0,s_1,...,s_k$ gibt, wobei $s_0 = s$, $s_k = t$ mit einem Zustand $P_i$ zu jedem $j\in [ 0,k-1 ]$, sodass $(s_j,s_{j+1})\in \mathcal{K}_i$
+	\item Ein Zustand t kann vom Zustand s in k Schritten erreicht werden (ist k-erreichbar), wenn es eine Folge von Zuständen $s_0,s_1,...,s_k$ gibt, wobei $s_0 = s$, $s_k = t$ mit einem Zustand $P_i$ zu jedem $j\in [ 0,k-1 ]$, sodass $(s_j,s_{j+1})\in \mathcal{K}_i$
 	\item Ein Zustand t ist vom Zustand s aus erreichbar, wenn es ein beliebiges $k \ge 0$\footnote{In \cite{kshemkalyani2011distributed} S. 286 wird dies für ein $k > 0$ definiert. Ich denke allerdings, dass es es $k \ge 0$ sein muss, damit die Definitionen für gemeinsames Wissen in Definition 8.2 und Theorem 8.1 übereinstimmen. } gibt, sodass t von s in k Schritten erreicht werden kann.
 \end{itemize}
 Man kann also direkt am Graphen erkennen, welche Zustände von einem anderen k-erreichbar sind, indem man alle Wege verfolgt, die sich mit k Kanten bilden lassen.
@@ -102,10 +102,56 @@ Nachdem die Königin ihre Ansprache gehalten hat, verändert sich die Kripke-Str
 	\draw (UHR) -- node[left] {1} (OHR);
 	\draw (UHR) -- node[above left] {2} (UHL);
 	\end{tikzpicture}
-	\caption{Ausgangssituation des \textit{cheating husbands}-Rätsels}
+	\caption{Kripke-Modell nach der Ansprache der Königin.}
 	\label{nachAnsprache}
 \end{figure}
 
-Da es nach der Ansprache das gemeinsame Wissen gibt, dass es mindestens einen untreuen Ehemann in Atlantis gibt, kann der Zustand (0,0,0) von allen Ehefrauen ausgeschlossen werden.
+Da es nach der Ansprache das gemeinsame Wissen gibt, dass es mindestens einen untreuen Ehemann in Atlantis gibt, kann der Zustand (0,0,0) von allen Ehefrauen ausgeschlossen werden. Alle Kanten zu (0,0,0) werden entfernt.
+Der entscheidende Unterschied zur Ausgangssituation besteht darin, dass es nun Zustände gibt, die von einzelnen Ehefrauen eindeutig identifiziert werden können, von denen also keine Kante mit der Beschriftung ihrer Nummer ausgeht. Dies sind alle Zustände, in denen nur ein Ehemann untreu war.
+Der Induktions-Anfang aus Kapitel \ref{motivation} nutzt gerade diese Eigenschaft. Wenn es $n=1$ untreue Ehemänner gibt, so kennt dessen Ehefrau keinen untreuen Ehemann und induziert daher, dass ihr eigener Ehemann untreu gewesen sein muss. Diese Situation kann die betroffene Ehefrau mit keiner anderen verwechseln.\\
+Da jede Ehefrau in unserem Fall mindestens einen untreuen Ehemann kennt, geschieht in der ersten Nacht nichts. Am nächsten Tag ergibt sich dann die Situation aus Abbildung \ref{zweiterTag}.
 
-$E^{k}(\phi)$ anhand eines Radiuses verdeutlichen
+\begin{figure}
+	\centering
+	\begin{tikzpicture}[thick,scale=0.2]
+	\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+	\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+	\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+	\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+	\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+	\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+	\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+	\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+	
+	\draw[fill=black] (UVL) circle (8pt);
+	\draw[fill=black] (UVR) circle (8pt);
+	\draw[fill=black] (OVL) circle (8pt);
+	\draw[fill=black] (OVR) circle (8pt);
+	\draw[fill=black] (UHL) circle (8pt);
+	\draw[fill=black] (UHR) circle (8pt);
+	\draw[fill=black] (OHL) circle (8pt);
+	\filldraw[color=red] (OHR) circle (8pt);	
+	
+	\draw (UHR) -- node[left] {3} (UVR);
+	\draw (UHR) -- node[left] {1} (OHR);
+	\draw (UHR) -- node[above left] {2} (UHL);
+
+	\end{tikzpicture}
+	\caption{Kripke-Modell nach der ersten Nacht.}
+	\label{zweiterTag}
+\end{figure}
+
+Da in der ersten Nacht kein Schuss zu hören war, ist es nun gemeinsames Wissen, dass es mindestens zwei untreue Ehemänner gab.
+Die zweite und dritte Ehefrau wissen nur von einem untreuen Ehemann und können somit schlussfolgern, dass (0,1,1), der wahre Zustand ist. Beide Ehefrauen erschießen ihren Ehemann, sodass am nächsten Tag auch die erste Ehefrau den korrekten Zustand kennt.
+
+\subsubsection{Visualisierung der Wissensoperatoren}
+
+Um die Äquivalenz der Definitionen für den \textit{jeder weiß}- und den gemeinsames Wissen-Operator aufzuzeigen, betrachten wir noch einmal die Ausgangssituation des \textit{cheating husbands}-Rätsels. 
+Die Formel $\Phi$ beschreibe die Eigenschaft, dass es mindestens einen untreuen Ehemann gibt.
+Warum ist $\Phi$ ausgehend vom tatsächlichen Zustand (0,1,1) kein gemeinsames Wissen?
+Damit $C(\Phi)$ gilt, muss $E^k(\Phi)$ für beliebige k gelten.
+
+
+Die beiden Defs müssen anders sein. Das sieht man daran, wenn man von (0,0,0) ausgeht und $E^1(\Phi)$ betrachtet. Oder wenn (0,0,0) der einzige Zustand ist, gilt $C(\Phi)$.
+ 
+ 
