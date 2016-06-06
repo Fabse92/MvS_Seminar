@@ -5,13 +5,13 @@ Der Graph ist dementsprechend bidirektional und reflexiv.\\
 Mit Hilfe der Erreichbarkeit können die Definitionen zu den \textit{jeder-weiß}- und den gemeinsames Wissen-Operator auf diese Graphen übertragen werden:
 \begin{itemize}
 	\item Ein Zustand t kann vom Zustand s in k Schritten erreicht werden (ist k-erreichbar), wenn es eine Folge von Zuständen $s_0,s_1,...,s_k$ gibt, wobei $s_0 = s$, $s_k = t$ mit einem Zustand $P_i$ zu jedem $j\in [ 0,k-1 ]$, sodass $(s_j,s_{j+1})\in \mathcal{K}_i$
-	\item Ein Zustand t ist vom Zustand s aus erreichbar, wenn es ein beliebiges $k \ge 0$\footnote{In \cite{kshemkalyani2011distributed} S. 286 wird dies für ein $k > 0$ definiert. Ich denke allerdings, dass es es $k \ge 0$ sein muss, damit die Definitionen für gemeinsames Wissen in Definition 8.2 und Theorem 8.1 übereinstimmen. } gibt, sodass t von s in k Schritten erreicht werden kann.
+	\item Ein Zustand t ist vom Zustand s aus erreichbar, wenn es ein beliebiges $k \ge 0$\footnote{\label{note1}In \cite{kshemkalyani2011distributed} S. 286 wird dies für ein $k > 0$ definiert. Zum Ende des Kapitels wird auf den Unterschied eingegangen.} gibt, sodass t von s in k Schritten erreicht werden kann.
 \end{itemize}
 Man kann also direkt am Graphen erkennen, welche Zustände von einem anderen k-erreichbar sind, indem man alle Wege verfolgt, die sich mit k Kanten bilden lassen.
 Generell erreichbar ist ein Zustand, wenn es eine ununterbrochene Verbindung zu ihm gibt.
 Daraus ergeben sich für den \textit{jeder-weiß}- und den gemeinsames Wissen-Operator folgende Definitionen:
 \begin{itemize}
-	\item (M,s) $\vDash E^{k}(\phi)$, genau dann wenn (M,t) $\vDash \phi$ für alle Zustände t gilt, die vom Zustand s in k (oder weniger)\footnote{In \cite{kshemkalyani2011distributed} S. 286 fehlt dieser Zusatz. Er ist allerdings notwendig, damit die rekursive Definition aus Definition 8.2 mit dieser übereinstimmt.} Schritten erreichbar sind.
+	\item (M,s) $\vDash E^{k}(\phi)$, genau dann wenn (M,t) $\vDash \phi$ für alle Zustände t gilt, die vom Zustand s in k (oder weniger)\footnote{\label{note2}In \cite{kshemkalyani2011distributed} S. 286 fehlt dieser Zusatz. Zum Ende des Kapitels wird auf den Unterschied eingegangen.} Schritten erreichbar sind.
 	\item (M,s) $\vDash C(\phi)$, genau dann wenn (M,t) $\vDash \phi$ für alle Zustände t gilt, die vom Zustand s erreichbar sind.
 \end{itemize}
 Um im Graphen zu erkennen, ob $E^{k}(\phi)$ in einem Zustand s gilt, muss man dementsprechend überprüfen, ob $\phi$ in allen Zuständen wahr ist, die sich in k oder weniger Schritten erreichen lassen. 
@@ -148,10 +148,22 @@ Die zweite und dritte Ehefrau wissen nur von einem untreuen Ehemann und können 
 
 Um die Äquivalenz der Definitionen für den \textit{jeder weiß}- und den gemeinsames Wissen-Operator aufzuzeigen, betrachten wir noch einmal die Ausgangssituation des \textit{cheating husbands}-Rätsels. 
 Die Formel $\Phi$ beschreibe die Eigenschaft, dass es mindestens einen untreuen Ehemann gibt.
-Warum ist $\Phi$ ausgehend vom tatsächlichen Zustand (0,1,1) kein gemeinsames Wissen?
-Damit $C(\Phi)$ gilt, muss $E^k(\Phi)$ für beliebige k gelten.
+In der Ausgangssituation wurde $\Phi$ noch nicht von der Königin bekannt gemacht.
+Warum ist $\Phi$ ausgehend vom tatsächlichen Zustand (0,1,1) kein gemeinsames Wissen?\\
+Damit $C(\Phi)$ gilt, muss nach der ursprünglichen Definition $E^k(\Phi)$ für alle $k>0$ gelten.
+Da jede Ehefrau in diesem Zustand mindestens von einem untreuen Ehemann weiß, gilt $E^1(\Phi)$.
+Zwei der drei Ehefrauen wissen nur von einem untreuen Ehemann, sie halten die Welt für möglich, in der dieser Ehemann der einzige untreue war.
+Ausgehend von so einer Welt, denken die beiden Ehefrauen weiter, würde die einzige betrogene Ehefrau von keinem untreuen Ehemann wissen.
+Im Zustand (0,1,1) weiß somit beispielsweise die dritte Ehefrau nicht, ob die zweite Ehefrau weiß, dass es mindestens einen untreuen Ehemann gibt.
+Obwohl jede Ehefrau weiß, dass es mindestens einen untreuen Ehemann gibt, ist diese Information kein gemeinsames Wissen.
+Somit gilt in der Ausgangssituation nicht $C(\Phi)$, der Induktionsanfang aus \ref{motivation} greift somit nicht, und es kann nie ein Ehemann erschossen werden.\\
+Diese Überlegungen können mit Hilfe der Definitionen zu den \textit{jeder weiß}- und den gemeinsames Wissen-Operator, die k-Erreichbarkeit ausnutzen, leicht am Graphen verifiziert werden.
+In jedem Zustand der von (0,1,1) in einem oder keinem Schritt erreichbar ist, gibt es mindestens einen untreuen Ehemann. In zwei Schritten ist allerdings (0,0,0) erreichbar. Somit gilt $E^1(\Phi)$, nicht aber $E^2(\Phi)$, also auch nicht $C(\Phi)$.\\
 
-
-Die beiden Defs müssen anders sein. Das sieht man daran, wenn man von (0,0,0) ausgeht und $E^1(\Phi)$ betrachtet. Oder wenn (0,0,0) der einzige Zustand ist, gilt $C(\Phi)$.
+An dieser Stelle können wir kurz betrachten, warum die Zusätze $^1$ und $^2$ zu den Definitionen von \cite{kshemkalyani2011distributed} sinnvoll sind:
+\begin{itemize}
+	\item Wird (M,s) $\vDash E^{k}(\phi)$ ohne den Zusatz (oder weniger) definiert, könnte man denken, dass im Zustand (0,0,0) $E^1(\Phi)$ gilt, denn in allen Zuständen, die in genau einem Schritt erreichbar sind, gilt $\Phi$. Dies gilt allerdings offensichtlich nicht, denn jede der drei Ehefrauen hält in diesem Zustand auch den Zustand (0,0,0) selbst für möglich. Technisch gesehen ist (0,0,0) auch in einem Schritt von (0,0,0) erreichbar, denn es existiert eine Folge von Zuständen $s_0$ und $s_1$, wobei $s_0$ = (0,0,0) und $s_1$ = (0,0,0), die für jedes $P_i$ in $\mathcal{K}_i$ enthalten sind. Dies erscheint jedoch recht unintuitiv.
+	\item Wird die generelle Erreichbarkeit mit einem $k > 1$ definiert, gibt es ebenso Situationen in denen unintuitive Zustandsfolgen mit dem selben Zustand genutzt werden müssen, um Eigenschaften zu zeigen. So muss in einem Kripke-Modell, in dem nur der Zustand (0,0,0) existiert, die Folge (0,0,0),(0,0,0),(0,0,0) betrachtet werden, wenn man zeigen möchte, dass $\Phi$ nicht gilt.
+\end{itemize}
  
  
