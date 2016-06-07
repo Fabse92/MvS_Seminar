@@ -1,0 +1,16 @@
+\section{Zusätzliche Kommunikation}
+\label{Kommuniaktion}
+In den bisherigen Betrachtungen der Varianten zum \textit{cheating-husbands}-Rätsel war der Informationsaustausch zwischen den Ehefrauen stark eingeschränkt.
+Die Kommunikation einer Ehefrau war darauf beschränkt mitzuteilen, ob sie weiß, dass sie betrogen wurde.
+Wenn sie dies mit Sicherheit sagen konnte, erschießt sie ihren Ehemann in der Nacht, die anderen Ehefrauen hörten den Schuss und wussten somit, dass eine andere Ehefrau sich sicher war, dass ihr Ehemann betrogen hat.\\
+Wenn diese Beschränkung aufgehoben wird, können ohne die Mächtigkeit des Systems zu erhöhen, wesentlich effizientere Kommunikationsprotokolle genutzt werden, um das Problem zu lösen.
+Um dies zu zeigen abstrahieren wir nun wieder von dem, als sehr entscheidend festgestellten, Nachrichtensystem. 
+Das Kommunikationsprotokoll der Königin wird nun wieder ohne Verzögerung verteilt, und jeder Ehefrau ist dies bekannt.
+Bei der ursprünglichen Lösung aus der Motivation wurde das Problem in n Tagen Tagen gelöst, wobei n die Anzahl der untreuen Ehemänner ist.
+Y. Moses et al. \cite{moses1986cheating} (vgl. S.175) zeigen, dass das Problem mit zusätzlicher Kommunikation mit einem Algorithmus gelöst werden kann, der höchstens drei Tage benötigt.
+Die Mächtigkeit des Systems bleibt hier insofern gleich, als das weiterhin nur über Schüsse kommuniziert werden kann. Dies entspricht einer binären Nachricht pro Nacht, entweder sind ein oder mehr Schüsse in der Nacht gefallen oder nicht.\\
+Zunächst können wir mit einer an \cite{moses1986cheating} angelegten Überlegung beweisen, dass es kein Protokoll gibt, das weniger als drei Nächte unabhängig von der Probleminstanz benötigt:\\
+Betrachten wir eine Probleminstanz mit k untreuen Ehemännern.
+Im Allgemeinen kann es nun zwei verschiedene Anzahlen von untreuen Ehemännern geben, von denen die Ehefrauen wissen.
+Entweder kennen sie alle k, wenn sie selbst nicht betrogen wurden, oder sie kennen $k-1$, wenn sie betrogen wurden.
+Da keine der Ehefrauen weiß, ob sie betrogen wurde, wissen sie nur, dass die ware Anzahl untreuer Ehemänner entweder $k_i$ oder $k_i+1$ ist.
