@@ -91,7 +91,7 @@
   	% hoher Berechnungsaufwand, oder gar nicht möglich
   	% Beispielsweise mehrere Roboter, die eine Aufgabe gemeinsam bearbeiten  	
   	\item Prozesse treffen anhand unvollständiger Informationen Entscheidungen
-  	\item \textbf{Ziel:} Wissen über den Systemzustand vom Prozesszustand ableiten
+  	\item \textbf{Ziel:} Wissen über den Systemzustand ausgehend von lokalen Zuständen ableiten
   \end{itemize}
 
 \end{frame}
@@ -112,9 +112,28 @@
 
 \begin{frame}
 	\frametitle{ Das \textit{cheating husbands}-Rätsel }
+	Induktionsrätsel zur Veranschaulichung von verteiltem Wissen
+	\begin{itemize}
+		\item Jede Ehefrau weiß, welche der anderen Ehefrauen betrogen wurden
+		\item Keine Ehefrau weiß, ob sie selbst betrogen wurde
+		\item Es gibt mindestens einen untreuen Ehemann
+		\item Die Frauen dürfen nicht untereinander kommunizieren
+		\item Findet eine Ehefrau heraus, dass sie betrogen wurde, erschießt sie ihren Ehemann um Mitternacht
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Lösung des \textit{cheating husbands}-Rätsels }
+	
+	\begin{block}{Behauptung}
+		Wenn n Ehemänner untreu waren, so werden diese alle in der n-ten Nacht erschossen.
+	\end{block}
+	
+	Beweis mittels vollständiger Induktion über die Anzahl untreuer Ehemänner $n$:
 	
 	\begin{itemize}
-		\item ToDo
+		\item \textbf{Induktionsanfang $(n=1)$:} Die betrogene Ehefrau weiß von keinem untreuen Ehemann. Da es mindestens einen untreuen Ehemann gibt, ist sie betrogen worden. Die betrogene Frau erschießt ihren Ehemann in der ersten Nacht. 
 	\end{itemize}
 	
 \end{frame}
