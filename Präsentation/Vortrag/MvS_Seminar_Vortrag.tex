@@ -138,17 +138,68 @@
 	
 \end{frame}
 
+\begin{frame}
+	\frametitle{ Lösung des \textit{cheating husbands}-Rätsels }
+	
+	\begin{block}{Behauptung}
+		Wenn n Ehemänner untreu waren, so werden diese alle in der n-ten Nacht erschossen.
+	\end{block}
+	 
+	\begin{itemize}
+		\item \textbf{Induktionsvoraussetzung:} Die Behauptung gelte für den Fall mit $n$ untreuen Ehemännern.   
+	\end{itemize}
+	 
+	\begin{itemize}
+		\item \textbf{Induktionsschritt $(n+1)$:} Betrogene Ehefrauen wissen von $n$ untreuen Ehemännern. Wenn es nur $n$ untreue Ehemänner gäbe, würden sie nach Induktionsvoraussetzung in der n-ten Nacht erschossen werden. In der n-ten Nacht fallen keine Schüsse, sodass die betrogenen Frauen dann wissen, dass sie selbst betrogen wurden.
+	\end{itemize}
+	
+	\begin{flushright}
+		$\square$
+	\end{flushright}
+\end{frame}
+
 \section{Logik des Wissens}
 
 \begin{frame}
 	\frametitle{ Logikoperatoren des Wissens }
 	
+	\begin{block}<1->{mögliche Welten}
+		Zustände des Systems, die mit dem lokalen Zustand des Prozesses verträglich sind.
+	\end{block}
+	
+	\begin{block}<2->{Kripke-Modell M}
+		Ein Kripke-Modell $M$ zu einem verteilten System mit $n$ Prozessen und einer Menge atomarer Aussagen $\Phi$ ist ein Tupel $(S,\pi,\mathcal{K}_1,...,\mathcal{K}_n)$.
+	\end{block}
 	\begin{itemize}
-		\item ToDo
+		\item<2-> $S$: Alle möglichen Systemzuständen
+		\item<2-> $\pi$: Belegung, die jeder atomaren Aussage einen Wahrheitswert zuordnet $\forall s\in S, \pi(s):\Phi \rightarrow \{0,1\}$
+		\item<2-> $\mathcal{K}_i$: Binäre Relation auf $S$, die jedem Prozess $i$ seine möglichen Welten zuordnet
 	\end{itemize}
 	
 \end{frame}
 
+\begin{frame}
+	\frametitle{ Logikoperatoren des Wissens }
+	
+	Epistemische Logikoperatoren erweitern die Aussagenlogik\bigskip
+	\begin{block}{Wissensoperatoren}
+		\begin{itemize}
+			\item<1-> (M,s) $\vDash \phi$, falls $\pi(s)(\phi) = true$
+			\item<2-> (M,s) $\vDash K_i(\phi)$, falls für alle t mit $(s,t) \in \mathcal{K}_i $ gilt:\\ (M,t) $\vDash \phi$
+			\item<3-> (M,s) $\vDash E^1(\phi)$, falls (M,s) $\vDash\land_{i\in N}K_i(\phi)$
+			\item<4-> (M,s) $\vDash E^{k+1}(\phi)$ mit $k\ge 1$, falls (M,s) $\vDash\land_{i\in N}K_i(E^k(\phi))$
+			\item<5-> (M,s) $\vDash C(\phi)$, falls (M,s) $\vDash\land_{k\in Z^*}E^k(\phi)$
+		\end{itemize}
+	\end{block}
+	
+	\begin{itemize}
+		\item $ K_i(\phi)$: Prozess i weiß, dass $\phi$ gilt.
+		\item $E^1(\phi)$: Jeder weiß, dass $\phi$ gilt.
+		\item $E^2(\phi)$: Jeder weiß, dass jeder weiß, dass $\phi$ gilt.
+		\item $C(\phi)$: Es ist gemeinsames Wissen, dass $\phi$ gilt.
+	\end{itemize}
+	
+\end{frame}
 
 \section{Kripke-Modelle}
 
