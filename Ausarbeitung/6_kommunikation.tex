@@ -24,25 +24,27 @@ So könnte ein Schuss in der ersten Nacht bedeuten, dass es entweder $x$ oder $y
 \subsection{Protokoll mit zusätzlicher Kommunikation}
 
 Die folgende leicht modifizierte Version des Kommunikationsprotokolls von Y. Moses et al. \cite{moses1986cheating} (vgl. S.175) ist eine optimale Lösung für das \textit{cheating husbands}-Rätsel mit zusätzlicher Kommunikation, in dem Sinne, dass es maximal drei Tage benötigt, um jegliche Probleminstanz korrekt zu lösen:
+
 \begin{itemize}
-	\item 1. Falls eine Ehefrau von $k_0$ (mit $k_0 \text{ mod } 3 = 0$) weiß, schießt sie in der ersten Nacht in die Luft.
-	\item 2. Falls eine Ehefrau von $k_1$ (mit $k_1 \text{ mod } 3 = 1$) weiß und in der ersten Nacht kein Schuss gefallen ist, erschießt sie ihren Ehemann in der zweiten Nacht.
-	\item 3. Falls eine Ehefrau von $k_2$ (mit $k_2 \text{ mod } 3 = 2$) weiß und in der ersten Nacht ein Schuss gefallen ist, erschießt sie ihren Ehemann in der zweiten Nacht.
-	\item 4. Falls in den ersten beiden Nächten kein Schuss gefallen ist, erschießen alle Ehefrauen ihren Mann in der dritten Nacht.
-	\item 5. Falls in der ersten Nacht ein Schuss gefallen ist und in der zweiten nicht, erschießen alle Ehefrauen, die in der ersten Nacht bereits geschossen haben, ihren Mann in der dritten Nacht. 
+	\item 1. Falls eine Ehefrau von $k_1$ (mit $k_1 \text{ mod } 3 = 1$) untreuen Ehemännern weiß, schießt sie in der ersten Nacht in die Luft.
+	\item 2. Falls eine Ehefrau von $k_2$ (mit $k_2 \text{ mod } 3 = 2$) untreuen Ehemännern weiß und in der ersten Nacht kein Schuss gefallen ist, erschießt sie ihren Ehemann in der zweiten Nacht.
+	\item 3. Falls eine Ehefrau von $k_0$ (mit $k_0 \text{ mod } 3 = 0$) untreuen Ehemännern weiß und in der ersten Nacht ein Schuss gefallen ist, erschießt sie ihren Ehemann in der zweiten Nacht.
+	\item 4. Falls in den ersten beiden Nächten kein Schuss gefallen ist und $k_0 \ne0$, erschießen alle Ehefrauen ihren Mann in der dritten Nacht.
+	\item 5. Falls in der ersten Nacht ein Schuss gefallen ist, in der zweiten Nach kein Schuss zu hören war, erschießen alle Ehefrauen, die in der ersten Nacht bereits geschossen haben, ihren Mann in der dritten Nacht. 
 \end{itemize}
 Das Protokoll kann folgendermaßen erklärt werden:\\
-Zu 2.: Hier wurde $k_0$ ausgeschlossen. Es gibt zwei Fälle, in denen niemand von $k_0$ einige hingegen von $k_1$ untreuen Ehemännern wissen: Manche Ehefrauen kennen $k_1$ und andere $k_2$ untreue Ehemänner oder alle Ehefrauen wissen von $k_1$ betrogenen Ehefrauen. Aufgrund der Modulo-Eigenschaft kann entweder $k_1 = k_0-2$ und $k_2 = k_0-1$ oder $k_1 = k_0+1$ und $k_2 = k_0+2$ sein. Entweder sind also alle Frauen betrogen worden, oder es gibt welche, die von einem untreuen Ehemann mehr als $k_1$ wissen. Die Ehefrauen, für die der zweite Fall des Protokolls zutrifft, müssen also betrogen worden sein.\\
-Zu 3.: Hier wurde $k_1$ ausgeschlossen,  gleiche Argumentation wie zu 2.\\
-Zu 4.: Sowohl $k_0$, als auch $k_1$ sind ausgeschlossen worden, jede Ehefrau weiß von $k_2$ untreuen Ehemännern, also sind alle Ehefrauen betrogen worden.\\
-Zu 5.: Gleiche Argumentation, wie bei 2. und 3., nur dass hier $k_2$ ausgeschlossen wurde. \\
-Es sind somit alle möglichen Fälle abgedeckt: Die Ehefrauen wissen von $k_i-1$ und $k_i$, von $k_i$ und $k_i+1$, nur von $k-1$, nur von $k$ oder nur von $k+1$ untreuen Ehemännern. Alle Regeln sind korrekt und somit auch das gesamte Kommunikationsprotokoll.\\
+(Zu 1.) In der ersten Nacht wird die Fallunterscheidung gemacht, ob es Ehefrauen gibt, die von $k_1$ untreuen Ehemännern wissen oder nicht.
+(Zu 2.) Falls dies nicht der Fall ist, ist bereits bekannt, dass es höchstens welche geben kann, die von $k_0$ oder $k_2$ untreuen Ehemännern wissen. Alle Ehefrauen, die von $k_2$ untreuen Ehemännern wissen, können ihren Mann nun töten, denn entweder wissen alle Ehefrauen von $k_2$ untreuen Ehemännern, dann sind alle betrogen wurden, oder die Ehefrauen, die nur $k_2$ untreue Ehemänner kennen, wissen von einem weniger, als die, die $k_0$ kennen.
+(Zu 3.) Falls in der ersten Nacht geschossen wurde, können die Frauen, die von $k_0$ untreuen Ehemännern ihren Ehemann erschießen. Die Begründung verläuft analog zu der vorherigen.
+(Zu 4.) Falls in den ersten beiden Nächten kein Schuss gefallen ist, wissen alle Ehefrauen von $k_0$ untreuen Ehemännern, sodass es entweder keinen einzigen untreuen Ehemann gibt, dann passiert nichts, oder alle Ehemänner waren untreu, dann werden alle erschossen.
+(Zu 5.) Falls in der ersten Nacht Schüsse fielen in der zweiten jedoch nicht, kann es nur Ehefrauen geben, die von $k_1$ oder $k_2$ untreuen Ehemännern wissen. Aus einem analogen Argument, wie zu 1. und 2. können dann die Ehefrauen, die von $k_1$ untreuen Ehemännern wissen, ihren Ehemann erschießen.\\
 
 Die Fähigkeit untereinander zu Kommunizieren ermöglicht es, dass in diesem Kommunikationsprotokoll keine Notwendigkeit darin besteht, dass die Königin verkündet, dass es mindestens einen untreuen Ehemann gibt. Tatsächlich funktioniert das Protokoll auch für den Fall, dass es keinen untreuen Ehemann gibt.
 Mit Hilfe der Veranschaulichung von Kripke-Modellen können wir nun die korrekte Funktionsweise des Protokolls an dem Beispiel aus Kapitel \ref{Kripke-Modelle} betrachten:\\
-Von der ersten zur zweiten Nacht wird der in Abbildung \ref{kom_(0,1,1)} dargestellte Übergang vollzogen, dass Problem wird also direkt gelöst.
-Der korrekte Zustand ist (0,1,1), somit ist die tatsächliche Anzahl der untreuen Ehemänner $k=2$. Die Ehefrauen 2 und 3 kennen $k_1 = 1$ untreue Ehemänner und Ehefrau 1 kennt $k_2 = 2$ untreue Ehemänner. Es gibt also keine Ehefrau, die $k_0$ untreue Ehemänner kennt, sodass in der ersten Nacht kein Schuss gefallen ist. Dementsprechend sind in Abbildung \ref{kom_(0,1,1)} die Zustände (0,0,0) und (1,1,1) ausgeschlossen worden.
-Die Zustände (1,0,0), (0,1,0) und (0,0,1) sind ebenso weggefallen, da es in ihnen eine Frau hätten geben müssen, die von keinem (also von $k_0$) untreuen Ehemann weiß. Alle Ehefrauen wissen also nach einer Nacht, dass sie sich in Zustand (0,1,1) befinden.
+Von der ersten zur zweiten Nacht wird der in Abbildung \ref{kom_(0,1,1)_1} dargestellte Übergang vollzogen, das Problem wird also direkt gelöst.
+Der korrekte Zustand ist (0,1,1), somit ist die tatsächliche Anzahl der untreuen Ehemänner $k=2$. Die Ehefrauen 2 und 3 kennen $k_1 = 1$ untreue Ehemänner und Ehefrau 1 weiß von allen $k_2 = 2$ untreuen Ehemännern.
+In der ersten Nacht schießen die beiden Ehefrauen mit $k_1$ in die Luft. Es gibt also mindestens einen untreuen Ehemann und höchstens zwei.
+Dementsprechend sind in Abbildung \ref{kom_(0,1,1)_1} die Zustände (0,0,0) und (1,1,1) ausgeschlossen worden.
 
 \begin{figure}
 	\begin{tikzpicture}[thick,scale=0.2]
@@ -98,14 +100,78 @@ Die Zustände (1,0,0), (0,1,0) und (0,0,1) sind ebenso weggefallen, da es in ihn
 	\draw[fill=black] (UHL) circle (8pt);
 	\draw[fill=black] (UHR) circle (8pt);
 	\draw[fill=black] (OHL) circle (8pt);
-	\filldraw[color=red] (OHR) circle (8pt);		
+	\filldraw[color=red] (OHR) circle (8pt);	
+	
+	\draw (UVL) -- node[above] {2} (UVR);
+	\draw (UVL) -- node[left] {3} (UHL);
+	\draw (OVR) -- node[left] {3} (OHR);
+	\draw (OVR) -- node[above left] {1} (UVR);
+	\draw (OHL) -- node[above] {2} (OHR);
+	\draw (OHL) -- node[left] {1} (UHL);	
 	\end{tikzpicture}
 	\caption{Übergang vom ersten zum zweiten Tag im \textit{cheating husbands}-Rätsels mit zusätzlicher Kommunikation ausgehend vom Zustand (0,1,1).}
-	\label{kom_(0,1,1)}
+	\label{kom_(0,1,1)_1}
 \end{figure}
 
-Betrachten wir den Fall, dass (0,0,0) der wahre Zustand ist. Alle Ehefrauen kennen also $k_0 = 0$ untreue Ehemänner.
-In der ersten Nacht sind also Schüsse zu hören, da niemand drei untreue Ehemänner kennen kann, wird Zustand (1,1,1) ausgeschlossen, die Zustände mit zwei untreuen Ehemännern können dann auch ausgeschlossen werden, da es entweder keinen oder einen untreuen Ehemann geben muss.
+Da es keine Ehefrau gibt, die von $k_0$ untreuen Ehemännern weiß, fällt in der zweiten Nacht kein Schuss.
+Somit können auch alle Zustände ausgeschlossen werden, in denen es nur einen untreuen Ehemann gibt, sodass das Problem, wie in Abbildung \ref{kom_(0,1,1)_2} zu sehen, nach drei Nächten gelöst ist.
+
+\begin{figure}
+	\begin{tikzpicture}[thick,scale=0.2]
+	\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+	\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+	\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+	\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+	\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+	\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+	\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+	\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+	
+	\draw[fill=black] (UVL) circle (8pt);
+	\draw[fill=black] (UVR) circle (8pt);
+	\draw[fill=black] (OVL) circle (8pt);
+	\draw[fill=black] (OVR) circle (8pt);
+	\draw[fill=black] (UHL) circle (8pt);
+	\draw[fill=black] (UHR) circle (8pt);
+	\draw[fill=black] (OHL) circle (8pt);
+	\filldraw[color=red] (OHR) circle (8pt);
+	
+	\draw (UVL) -- node[above] {2} (UVR);
+	\draw (UVL) -- node[left] {3} (UHL);
+	\draw (OVR) -- node[left] {3} (OHR);
+	\draw (OVR) -- node[above left] {1} (UVR);
+	\draw (OHL) -- node[above] {2} (OHR);
+	\draw (OHL) -- node[left] {1} (UHL);	
+	
+	\draw[line width=1.5pt,->] (22,8,12) -- node[above] {2. Nacht} (26,8,12); 	
+	\end{tikzpicture}
+	\qquad
+	\hspace*{-0.7cm}
+	\begin{tikzpicture}[thick,scale=0.2]
+	\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+	\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+	\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+	\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+	\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+	\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+	\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+	\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+	
+	\draw[fill=black] (UVL) circle (8pt);
+	\draw[fill=black] (UVR) circle (8pt);
+	\draw[fill=black] (OVL) circle (8pt);
+	\draw[fill=black] (OVR) circle (8pt);
+	\draw[fill=black] (UHL) circle (8pt);
+	\draw[fill=black] (UHR) circle (8pt);
+	\draw[fill=black] (OHL) circle (8pt);
+	\filldraw[color=red] (OHR) circle (8pt);		
+	\end{tikzpicture}
+	\caption{Übergang vom zweiten zum ersten Tag im \textit{cheating husbands}-Rätsels mit zusätzlicher Kommunikation ausgehend vom Zustand (0,1,1).}
+	\label{kom_(0,1,1)_2}
+\end{figure}
+
+Betrachten wir den Spezialfall, dass (0,0,0) der wahre Zustand ist, mit Hilfe der Kripke-Modelle. Alle Ehefrauen kennen also $k_0 = 0$ untreue Ehemänner.
+In der ersten Nacht sind keine Schüsse zu hören, sodass alle Zustände mit einem untreuen Ehemann ausgeschlossen werden können. Es ergibt sich die Situation aus \ref{kom_(0,0,0)_1}.
 
 \begin{figure}
 	\begin{tikzpicture}[thick,scale=0.2]
@@ -163,10 +229,219 @@ In der ersten Nacht sind also Schüsse zu hören, da niemand drei untreue Ehemä
 	\draw[fill=black] (OHL) circle (8pt);
 	\filldraw[color=black] (OHR) circle (8pt);
 	
-	\draw (UVL) -- node[above left] {1} (OVL);
-	\draw (OVR) -- node[above right] {2} (OVL);
-	\draw (OHL) -- node[left] {3} (OVL);		
+	\draw (UHR) -- node[left] {3} (UVR);
+	\draw (UHR) -- node[left] {1} (OHR);
+	\draw (UHR) -- node[above left] {2} (UHL);	
 	\end{tikzpicture}
-	\caption{Übergang vom ersten zum zweiten Tag im \textit{cheating husbands}-Rätsels mit zusätzlicher Kommunikation}
-	\label{kom_(0,0,0)}
+	\caption{Übergang vom ersten zum zweiten Tag im \textit{cheating husbands}-Rätsels mit zusätzlicher Kommunikation ausgehend vom Zustand (0,0,0).}
+	\label{kom_(0,0,0)_1}
 \end{figure}
+
+Zu diesem Zeitpunkt ist bereits jeder Ehefrau bewusst, dass (0,0,0) der korrekte Zustand ist. Wenn das Protokoll dennoch weiter ausgeführt wird ergibt sich der Übergang aus \ref{kom_(0,0,0)_2}, da keine Ehefrau von $k_2$ untreuen Ehemännern weiß.
+Da in den ersten beiden Nächten kein Schuss gefallen ist, aber $k_0 = 0$ wird niemand erschossen, und das Problem wurde korrekt gelöst.
+
+\begin{figure}
+	\begin{tikzpicture}[thick,scale=0.2]
+	\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+	\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+	\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+	\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+	\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+	\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+	\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+	\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+	
+	\draw[fill=black] (UVL) circle (8pt);
+	\draw[fill=black] (UVR) circle (8pt);
+	\filldraw[color=red] (OVL) circle (8pt);
+	\draw[fill=black] (OVR) circle (8pt);
+	\draw[fill=black] (UHL) circle (8pt);
+	\draw[fill=black] (UHR) circle (8pt);
+	\draw[fill=black] (OHL) circle (8pt);
+	\filldraw[color=black] (OHR) circle (8pt);
+	
+	\draw (UHR) -- node[left] {3} (UVR);
+	\draw (UHR) -- node[left] {1} (OHR);
+	\draw (UHR) -- node[above left] {2} (UHL);	
+	
+	\draw[line width=1.5pt,->] (22,8,12) -- node[above] {2. Nacht} (26,8,12); 	
+	\end{tikzpicture}
+	\qquad
+	\hspace*{-0.7cm}
+	\begin{tikzpicture}[thick,scale=0.2]
+	\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+	\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+	\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+	\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+	\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+	\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+	\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+	\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+	
+	\draw[fill=black] (UVL) circle (8pt);
+	\draw[fill=black] (UVR) circle (8pt);
+	\filldraw[color=red] (OVL) circle (8pt);
+	\draw[fill=black] (OVR) circle (8pt);
+	\draw[fill=black] (UHL) circle (8pt);
+	\draw[fill=black] (UHR) circle (8pt);
+	\draw[fill=black] (OHL) circle (8pt);
+	\filldraw[color=black] (OHR) circle (8pt);
+	
+	\end{tikzpicture}
+	\caption{Übergang vom ersten zum zweiten Tag im \textit{cheating husbands}-Rätsels mit zusätzlicher Kommunikation ausgehend vom Zustand (0,0,0).}
+	\label{kom_(0,0,0)_2}
+\end{figure}
+
+%\begin{itemize}
+%	\item 1. Falls eine Ehefrau von $k_0$ (mit $k_0 \text{ mod } 3 = 0$) untreuen Ehemännern weiß, schießt sie in der ersten Nacht in die Luft.
+%	\item 2. Falls eine Ehefrau von $k_1$ (mit $k_1 \text{ mod } 3 = 1$) untreuen Ehemännern weiß und in der ersten Nacht kein Schuss gefallen ist, erschießt sie ihren Ehemann in der zweiten Nacht.
+%	\item 3. Falls eine Ehefrau von $k_2$ (mit $k_2 \text{ mod } 3 = 2$) untreuen Ehemännern weiß und in der ersten Nacht ein Schuss gefallen ist, erschießt sie ihren Ehemann in der zweiten Nacht.
+%	\item 4. Falls in den ersten beiden Nächten kein Schuss gefallen ist, erschießen alle Ehefrauen ihren Mann in der dritten Nacht.
+%	\item 5. Falls in der ersten Nacht ein Schuss gefallen ist, in der zweiten Nach kein Schuss zu hören war (und $k_0 \ne0$ $<-$ \textbf{das stimmt nicht}), erschießen alle Ehefrauen, die in der ersten Nacht bereits geschossen haben, ihren Mann in der dritten Nacht. 
+%\end{itemize}
+%Das Protokoll kann folgendermaßen erklärt werden:\\
+%Zu 2.: Hier wurde $k_0$ ausgeschlossen. Es gibt zwei Fälle, in denen niemand von $k_0$ einige hingegen von $k_1$ untreuen Ehemännern wissen: Manche Ehefrauen kennen $k_1$ und andere $k_2$ untreue Ehemänner oder alle Ehefrauen wissen von $k_1$ betrogenen Ehefrauen. Aufgrund der Modulo-Eigenschaft kann entweder $k_1 = k_0-2$ und $k_2 = k_0-1$ oder $k_1 = k_0+1$ und $k_2 = k_0+2$ sein. Entweder sind also alle Frauen betrogen worden, oder es gibt welche, die von einem untreuen Ehemann mehr als $k_1$ wissen. Die Ehefrauen, für die der zweite Fall des Protokolls zutrifft, müssen also betrogen worden sein.\\
+%Zu 3.: Hier wurde $k_1$ ausgeschlossen,  gleiche Argumentation wie zu 2.\\
+%Zu 4.: Sowohl $k_0$, als auch $k_1$ sind ausgeschlossen worden, jede Ehefrau weiß von $k_2$ untreuen Ehemännern, also sind alle Ehefrauen betrogen worden.\\
+%Zu 5.: Gleiche Argumentation, wie bei 2. und 3., nur dass hier $k_2$ ausgeschlossen wurde. \\
+%Es sind somit alle möglichen Fälle abgedeckt: Die Ehefrauen wissen von $k_i-1$ und $k_i$, von $k_i$ und $k_i+1$, nur von $k-1$, nur von $k$ oder nur von $k+1$ untreuen Ehemännern. Alle Regeln sind korrekt und somit auch das gesamte Kommunikationsprotokoll.\\
+%
+%Die Fähigkeit untereinander zu Kommunizieren ermöglicht es, dass in diesem Kommunikationsprotokoll keine Notwendigkeit darin besteht, dass die Königin verkündet, dass es mindestens einen untreuen Ehemann gibt. (Tatsächlich funktioniert das Protokoll auch für den Fall, dass es keinen untreuen Ehemann gibt. $<-$ \textbf{Das stimmt nicht!})
+%Mit Hilfe der Veranschaulichung von Kripke-Modellen können wir nun die korrekte Funktionsweise des Protokolls an dem Beispiel aus Kapitel \ref{Kripke-Modelle} betrachten:\\
+%Von der ersten zur zweiten Nacht wird der in Abbildung \ref{kom_(0,1,1)} dargestellte Übergang vollzogen, dass Problem wird also direkt gelöst.
+%Der korrekte Zustand ist (0,1,1), somit ist die tatsächliche Anzahl der untreuen Ehemänner $k=2$. Die Ehefrauen 2 und 3 kennen $k_1 = 1$ untreue Ehemänner und Ehefrau 1 kennt $k_2 = 2$ untreue Ehemänner. Es gibt also keine Ehefrau, die $k_0$ untreue Ehemänner kennt, sodass in der ersten Nacht kein Schuss gefallen ist. Dementsprechend sind in Abbildung \ref{kom_(0,1,1)} die Zustände (0,0,0) und (1,1,1) ausgeschlossen worden.
+%Die Zustände (1,0,0), (0,1,0) und (0,0,1) sind ebenso weggefallen, da es in ihnen eine Frau hätten geben müssen, die von keinem (also von $k_0$) untreuen Ehemann weiß. Alle Ehefrauen wissen also nach einer Nacht, dass sie sich in Zustand (0,1,1) befinden.
+%
+%\begin{figure}
+%	\begin{tikzpicture}[thick,scale=0.2]
+%	\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+%	\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+%	\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+%	\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+%	\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+%	\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+%	\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+%	\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+%	
+%	\draw[fill=black] (UVL) circle (8pt);
+%	\draw[fill=black] (UVR) circle (8pt);
+%	\draw[fill=black] (OVL) circle (8pt);
+%	\draw[fill=black] (OVR) circle (8pt);
+%	\draw[fill=black] (UHL) circle (8pt);
+%	\draw[fill=black] (UHR) circle (8pt);
+%	\draw[fill=black] (OHL) circle (8pt);
+%	\filldraw[color=red] (OHR) circle (8pt);
+%	
+%	\draw (UVL) -- node[above] {2} (UVR);
+%	\draw (UVL) -- node[above left] {1} (OVL);
+%	\draw (UVL) -- node[left] {3} (UHL);
+%	\draw (OVR) -- node[above right] {2} (OVL);
+%	\draw (OVR) -- node[left] {3} (OHR);
+%	\draw (OVR) -- node[above left] {1} (UVR);
+%	\draw (OHL) -- node[left] {3} (OVL);
+%	\draw (OHL) -- node[above] {2} (OHR);
+%	\draw (OHL) -- node[left] {1} (UHL);
+%	\draw (UHR) -- node[left] {3} (UVR);
+%	\draw (UHR) -- node[left] {1} (OHR);
+%	\draw (UHR) -- node[above left] {2} (UHL);	
+%	
+%	\draw[line width=1.5pt,->] (22,8,12) -- node[above] {1. Nacht} (26,8,12); 	
+%	\end{tikzpicture}
+%	\qquad
+%	\hspace*{-0.7cm}
+%	\begin{tikzpicture}[thick,scale=0.2]
+%	\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+%	\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+%	\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+%	\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+%	\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+%	\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+%	\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+%	\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+%	
+%	\draw[fill=black] (UVL) circle (8pt);
+%	\draw[fill=black] (UVR) circle (8pt);
+%	\draw[fill=black] (OVL) circle (8pt);
+%	\draw[fill=black] (OVR) circle (8pt);
+%	\draw[fill=black] (UHL) circle (8pt);
+%	\draw[fill=black] (UHR) circle (8pt);
+%	\draw[fill=black] (OHL) circle (8pt);
+%	\filldraw[color=red] (OHR) circle (8pt);		
+%	\end{tikzpicture}
+%	\caption{Übergang vom ersten zum zweiten Tag im \textit{cheating husbands}-Rätsels mit zusätzlicher Kommunikation ausgehend vom Zustand (0,1,1).}
+%	\label{kom_(0,1,1)}
+%\end{figure}
+%
+%Betrachten wir den Spezialfall, dass (0,0,0) der wahre Zustand ist, mit Hilfe der Kripke-Modelle. Alle Ehefrauen kennen also $k_0 = 0$ untreue Ehemänner.
+%In der ersten Nacht sind also Schüsse zu hören, da niemand drei untreue Ehemänner kennen kann, wird Zustand (1,1,1) ausgeschlossen, die Zustände mit zwei untreuen Ehemännern können dann auch ausgeschlossen werden, da es entweder keinen oder einen untreuen Ehemann geben muss.
+%
+%
+%\begin{figure}
+%	\begin{tikzpicture}[thick,scale=0.2]
+%	\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+%	\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+%	\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+%	\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+%	\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+%	\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+%	\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+%	\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+%	
+%	\draw[fill=black] (UVL) circle (8pt);
+%	\draw[fill=black] (UVR) circle (8pt);
+%	\filldraw[color=red] (OVL) circle (8pt);
+%	\draw[fill=black] (OVR) circle (8pt);
+%	\draw[fill=black] (UHL) circle (8pt);
+%	\draw[fill=black] (UHR) circle (8pt);
+%	\draw[fill=black] (OHL) circle (8pt);
+%	\filldraw[color=black] (OHR) circle (8pt);
+%	
+%	\draw (UVL) -- node[above] {2} (UVR);
+%	\draw (UVL) -- node[above left] {1} (OVL);
+%	\draw (UVL) -- node[left] {3} (UHL);
+%	\draw (OVR) -- node[above right] {2} (OVL);
+%	\draw (OVR) -- node[left] {3} (OHR);
+%	\draw (OVR) -- node[above left] {1} (UVR);
+%	\draw (OHL) -- node[left] {3} (OVL);
+%	\draw (OHL) -- node[above] {2} (OHR);
+%	\draw (OHL) -- node[left] {1} (UHL);
+%	\draw (UHR) -- node[left] {3} (UVR);
+%	\draw (UHR) -- node[left] {1} (OHR);
+%	\draw (UHR) -- node[above left] {2} (UHL);	
+%	
+%	\draw[line width=1.5pt,->] (22,8,12) -- node[above] {1. Nacht} (26,8,12); 	
+%	\end{tikzpicture}
+%	\qquad
+%	\hspace*{-0.7cm}
+%	\begin{tikzpicture}[thick,scale=0.2]
+%	\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+%	\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+%	\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+%	\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+%	\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+%	\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+%	\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+%	\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+%	
+%	\draw[fill=black] (UVL) circle (8pt);
+%	\draw[fill=black] (UVR) circle (8pt);
+%	\filldraw[color=red] (OVL) circle (8pt);
+%	\draw[fill=black] (OVR) circle (8pt);
+%	\draw[fill=black] (UHL) circle (8pt);
+%	\draw[fill=black] (UHR) circle (8pt);
+%	\draw[fill=black] (OHL) circle (8pt);
+%	\filldraw[color=black] (OHR) circle (8pt);
+%	
+%	\draw (UVL) -- node[above left] {1} (OVL);
+%	\draw (OVR) -- node[above right] {2} (OVL);
+%	\draw (OHL) -- node[left] {3} (OVL);		
+%	\end{tikzpicture}
+%	\caption{Übergang vom ersten zum zweiten Tag im \textit{cheating husbands}-Rätsels mit zusätzlicher Kommunikation}
+%	\label{kom_(0,0,0)}
+%\end{figure}
+%
+%Anders als in \cite{moses1986cheating} behauptet wird, kann das Protokoll nicht so erweitert werden, dass es alle Probleminstanzen in drei Tagen löst und für den Fall, dass es keinen untreuen Ehemann gibt, korrekt funktioniert.(\textbf{Stimmt das?})
+%Wie wir bereits gezeigt haben, braucht man im Allgemeinen zwei Nächte, um festzustellen, von welchen beiden Anzahlen untreuer Ehemänner die Frauen im System wissen. Normalerweise ist das Problem dann auch gelöst, die Frauen, die von der kleineren Anzahl (der beiden verbliebenen Möglichkeiten) untreuer Ehemänner ausgehen, erschießen ihre Ehemänner. Dies ist richtig, denn entweder wissen alle Ehefrauen von gleich vielen untreuen Ehemännern (alle waren untreu) oder die mit der kleineren Anzahl kennen einen zu wenig, weil sie selbst betrogen wurden. 
+%Dieses Vorgehen ist allerdings nicht mehr korrekt, wenn es tatsächlich keinen einzigen untreuen Ehemann gibt, denn in diesem Fall wissen zwar alle Ehefrauen von gleich vielen untreuen Ehemännern, aber niemand ist betrogen worden.
+%Es wäre dementsprechend mindestens noch eine weitere Nacht notwendig, um zu beispielsweise zu unterscheiden, ob tatsächlich alle Frauen von der gleichen Anzahl untreuer Ehemänner wissen, oder es welche gibt, die mehr als die anderen kennen. (\textbf{kann ich das beweisen?})
+
