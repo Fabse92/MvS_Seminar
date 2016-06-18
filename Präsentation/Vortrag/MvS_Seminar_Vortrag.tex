@@ -7,12 +7,17 @@
 % \pgfpagesuselayout{2 on 1}[a4paper, border shrink 5mm]
 %% \pgfpagesuselayout{4 on 1}[a4paper, landscape]
 
-% \usepackage[german]{babel}
+\usepackage[german]{babel}
 \usepackage[latin1]{inputenc}
 % \usepackage{times}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
 \usepackage{amscd}
+\usepackage{pdfsync}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tikz}
 
 
 \setlength{\parskip}{2mm}
@@ -20,7 +25,7 @@
 % % don't show title and author in the footer
 % \beamertemplatefootempty
 % % Navigationssymbole ausblenden:
-% \setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{navigation symbols}{}
 % % \setbeamertemplate{footline}{}
 % %% ohne Navigation:
 % \beamertemplatenavigationsymbolsempty  
@@ -204,28 +209,215 @@
 \section{Kripke-Modelle}
 
 \begin{frame}
+	\frametitle{ Kripke-Modelle zum \textit{cheating husbands}-Rätsel }
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}[thick,scale=0.21]
+		\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+		\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+		\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+		\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+		\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+		\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+		\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+		\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+		
+		\draw[fill=black] (UVL) circle (8pt);
+		\draw[fill=black] (UVR) circle (8pt);
+		\draw[fill=black] (OVL) circle (8pt);
+		\draw[fill=black] (OVR) circle (8pt);
+		\draw[fill=black] (UHL) circle (8pt);
+		\draw[fill=black] (UHR) circle (8pt);
+		\draw[fill=black] (OHL) circle (8pt);
+		\filldraw<1>[color=black] (OHR) circle (8pt);
+		\filldraw<2>[color=red] (OHR) circle (8pt);
+		
+		\draw (UVL) -- node[above] {2} (UVR);
+		\draw (UVL) -- node[above left] {1} (OVL);
+		\draw (UVL) -- node[left] {3} (UHL);
+		\draw (OVR) -- node[above right] {2} (OVL);
+		\draw (OVR) -- node[left] {3} (OHR);
+		\draw (OVR) -- node[above left] {1} (UVR);
+		\draw (OHL) -- node[left] {3} (OVL);
+		\draw (OHL) -- node[above] {2} (OHR);
+		\draw (OHL) -- node[left] {1} (UHL);
+		\draw (UHR) -- node[left] {3} (UVR);
+		\draw (UHR) -- node[left] {1} (OHR);
+	    \draw (UHR) -- node[above left] {2} (UHL);
+		\end{tikzpicture}
+		\caption{Ausgangssituation des \textit{cheating husbands}-Rätsels}
+	\end{figure}
+	\begin{itemize}
+		\item Knoten entsprechen Systemzuständen %beschriftet mit den atomaren Aussagen, die in ihm wahr sind
+		\item Kanten verbinden mögliche Welten
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Kripke-Modelle zum \textit{cheating husbands}-Rätsel }
+	\medskip
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}[thick,scale=0.21]
+		\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+		\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+		\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+		\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+		\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+		\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+		\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+		\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+		
+		\draw[fill=black] (UVL) circle (8pt);
+		\draw[fill=black] (UVR) circle (8pt);
+		\draw[fill=black] (OVL) circle (8pt);
+		\draw[fill=black] (OVR) circle (8pt);
+		\draw[fill=black] (UHL) circle (8pt);
+		\draw[fill=black] (UHR) circle (8pt);
+		\draw[fill=black] (OHL) circle (8pt);
+		\filldraw[color=red] (OHR) circle (8pt);
+		
+		\draw (UVL) -- node[above] {2} (UVR);
+		
+		\draw (UVL) -- node[left] {3} (UHL);
+		
+		\draw (OVR) -- node[left] {3} (OHR);
+		\draw (OVR) -- node[above left] {1} (UVR);
+		
+		\draw (OHL) -- node[above] {2} (OHR);
+		\draw (OHL) -- node[left] {1} (UHL);
+		\draw (UHR) -- node[left] {3} (UVR);
+		\draw (UHR) -- node[left] {1} (OHR);
+		\draw (UHR) -- node[above left] {2} (UHL);
+		\end{tikzpicture}
+		\caption{Es gibt mindestens einen untreuen Ehemann.}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Kripke-Modelle zum \textit{cheating husbands}-Rätsel }
+	\medskip
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}[thick,scale=0.21]
+		\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+		\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+		\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+		\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+		\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+		\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+		\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+		\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+		
+		\draw[fill=black] (UVL) circle (8pt);
+		\draw[fill=black] (UVR) circle (8pt);
+		\draw[fill=black] (OVL) circle (8pt);
+		\draw[fill=black] (OVR) circle (8pt);
+		\draw[fill=black] (UHL) circle (8pt);
+		\draw[fill=black] (UHR) circle (8pt);
+		\draw[fill=black] (OHL) circle (8pt);
+		\filldraw[color=red] (OHR) circle (8pt);	
+		
+		\draw (UHR) -- node[left] {3} (UVR);
+		\draw (UHR) -- node[left] {1} (OHR);
+		\draw (UHR) -- node[above left] {2} (UHL);
+		
+		\end{tikzpicture}
+		\caption{Kripke-Modell nach der ersten Nacht.}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
 	\frametitle{ Logikoperatoren in Kripke-Modellen }
 	
-	\begin{itemize}
-		\item ToDo
-	\end{itemize}
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}[thick,scale=0.21]
+		\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+		\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+		\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+		\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+		\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+		\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+		\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+		\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+		
+		\draw[fill=black] (UVL) circle (8pt);
+		\draw[fill=black] (UVR) circle (8pt);
+		\draw[fill=black] (OVL) circle (8pt);
+		\draw[fill=black] (OVR) circle (8pt);
+		\draw[fill=black] (UHL) circle (8pt);
+		\draw[fill=black] (UHR) circle (8pt);
+		\draw[fill=black] (OHL) circle (8pt);
+		\filldraw[color=black] (OHR) circle (8pt);
+		
+		\draw (UVL) -- node[above] {2} (UVR);
+		\draw (UVL) -- node[above left] {1} (OVL);
+		\draw (UVL) -- node[left] {3} (UHL);
+		\draw (OVR) -- node[above right] {2} (OVL);
+		\draw (OVR) -- node[left] {3} (OHR);
+		\draw (OVR) -- node[above left] {1} (UVR);
+		\draw (OHL) -- node[left] {3} (OVL);
+		\draw (OHL) -- node[above] {2} (OHR);
+		\draw (OHL) -- node[left] {1} (UHL);
+		\draw (UHR) -- node[left] {3} (UVR);
+		\draw (UHR) -- node[left] {1} (OHR);
+		\draw (UHR) -- node[above left] {2} (UHL);
+		\end{tikzpicture}
+		\caption{Ausgangssituation des \textit{cheating husbands}-Rätsels}
+	\end{figure}
+	
+\begin{itemize}
+	\item (M,s) $\vDash E^{k}(\phi)$, genau dann wenn (M,t) $\vDash \phi$ für alle Zustände t gilt, die vom Zustand s in k Schritten erreichbar sind.
+\end{itemize}
 	
 \end{frame}
 
 \begin{frame}
-	\frametitle{ Veranschaulichung mit Kripke-Modellen }
+	\frametitle{ Logikoperatoren in Kripke-Modellen }
+	
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}[thick,scale=0.21]
+		\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+		\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+		\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+		\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+		\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+		\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+		\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+		\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+		
+		\draw[fill=black] (UVL) circle (8pt);
+		\draw[fill=black] (UVR) circle (8pt);
+		\draw[fill=black] (OVL) circle (8pt);
+		\draw[fill=black] (OVR) circle (8pt);
+		\draw[fill=black] (UHL) circle (8pt);
+		\draw[fill=black] (UHR) circle (8pt);
+		\draw[fill=black] (OHL) circle (8pt);
+		\filldraw[color=black] (OHR) circle (8pt);
+		
+		\draw (UVL) -- node[above] {2} (UVR);
+		\draw (UVL) -- node[above left] {1} (OVL);
+		\draw (UVL) -- node[left] {3} (UHL);
+		\draw (OVR) -- node[above right] {2} (OVL);
+		\draw (OVR) -- node[left] {3} (OHR);
+		\draw (OVR) -- node[above left] {1} (UVR);
+		\draw (OHL) -- node[left] {3} (OVL);
+		\draw (OHL) -- node[above] {2} (OHR);
+		\draw (OHL) -- node[left] {1} (UHL);
+		\draw (UHR) -- node[left] {3} (UVR);
+		\draw (UHR) -- node[left] {1} (OHR);
+		\draw (UHR) -- node[above left] {2} (UHL);
+		\end{tikzpicture}
+		\caption{Ausgangssituation des \textit{cheating husbands}-Rätsels}
+	\end{figure}
 	
 	\begin{itemize}
-		\item ToDo
-	\end{itemize}
-	
-\end{frame}
-
-\begin{frame}
-	\frametitle{ Das \textit{cheating husbands}-Rätsel veranschaulicht  }
-	
-	\begin{itemize}
-		\item ToDo
+		\item (M,s) $\vDash C(\phi)$, genau dann wenn (M,t) $\vDash \phi$ für alle Zustände t gilt, die vom Zustand s erreichbar sind.
 	\end{itemize}
 	
 \end{frame}
@@ -255,11 +447,244 @@
 \section{Zusätzliche Kommunikation}
 
 \begin{frame}
-	\frametitle{ Das \textit{cheating husbands}-Rätsel mit zus. Kommunikation }
+	\frametitle{ Zusätzliche Kommunikation }
+	\begin{block}{Problem}
+		In einem verteilten System soll das Konsens-Problem gelöst werden. Die Prozesse haben einen 1-Bit gemeinsamen Speicher. Es gibt maximal zwei verschiedene Werte im System, diese unterscheiden sich nur um eins.
+	\end{block}
+	Dies entspricht dem \textit{cheating husbands}-Rätsel mit folgender Erweiterung:
 	
 	\begin{itemize}
-		\item ToDo
+		\item Die Ehefrauen dürfen um Mitternacht in die Luft schießen
 	\end{itemize}
+		
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Lösung des Problems }
+	Folgendes Kommunikationsprotokoll löst das Problem:
+	\begin{itemize}
+		\item 1. Falls eine Ehefrau von $\mathbf{k_1}$ (mit $k_1 \text{ mod } 3 = 1$) untreuen Ehemännern weiß, schießt sie in der ersten Nacht in die Luft.
+		\item 2. Falls eine Ehefrau von $\mathbf{k_2}$ (mit $k_2 \text{ mod } 3 = 2$) untreuen Ehemännern weiß und \textbf{in der ersten Nacht keine Schüsse} gefallen sind, erschießt sie ihren Ehemann in der zweiten Nacht.
+		\item 3. Falls eine Ehefrau von $\mathbf{k_0}$ (mit $k_0 \text{ mod } 3 = 0$) untreuen Ehemännern weiß und \textbf{in der ersten Nacht Schüsse} gefallen sind, erschießt sie ihren Ehemann in der zweiten Nacht.
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Lösung des Problems }
+	\begin{itemize}
+		\item 4. Falls \textbf{in den ersten beiden Nächten keine Schüsse} gefallen sind und $\mathbf{k_0 \ne0}$, erschießen alle Ehefrauen ihren Mann in der dritten Nacht.
+		\item 5. Falls \textbf{in der ersten Nacht Schüsse} gefallen sind, \textbf{in der zweiten Nach keine Schüsse} zu hören waren, erschießen alle Ehefrauen, die in der ersten Nacht bereits geschossen haben, ihren Mann in der dritten Nacht. 
+	\end{itemize}
+	
+	\begin{block}{Satz}
+		Das Protokoll löst das Problem in maximal drei Nächten. Es gibt kein Protokoll, das weniger als drei Nächte benötigt.
+	\end{block}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Lösung des Problems im Zustand (0,1,1) }
+	
+	\begin{figure}
+		\begin{tikzpicture}[thick,scale=0.21]
+		\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+		\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+		\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+		\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+		\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+		\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+		\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+		\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+		
+		\draw[fill=black] (UVL) circle (8pt);
+		\draw[fill=black] (UVR) circle (8pt);
+		\draw[fill=black] (OVL) circle (8pt);
+		\draw[fill=black] (OVR) circle (8pt);
+		\draw[fill=black] (UHL) circle (8pt);
+		\draw[fill=black] (UHR) circle (8pt);
+		\draw[fill=black] (OHL) circle (8pt);
+		\filldraw[color=red] (OHR) circle (8pt);
+		
+		\draw (UVL) -- node[above] {2} (UVR);
+		\draw (UVL) -- node[above left] {1} (OVL);
+		\draw (UVL) -- node[left] {3} (UHL);
+		\draw (OVR) -- node[above right] {2} (OVL);
+		\draw (OVR) -- node[left] {3} (OHR);
+		\draw (OVR) -- node[above left] {1} (UVR);
+		\draw (OHL) -- node[left] {3} (OVL);
+		\draw (OHL) -- node[above] {2} (OHR);
+		\draw (OHL) -- node[left] {1} (UHL);
+		\draw (UHR) -- node[left] {3} (UVR);
+		\draw (UHR) -- node[left] {1} (OHR);
+		\draw (UHR) -- node[above left] {2} (UHL);	
+		\end{tikzpicture}
+		\caption{Ausgangssituation}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Lösung des Problems im Zustand (0,1,1) }
+	
+	\begin{figure}
+		\begin{tikzpicture}[thick,scale=0.21]
+		\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+		\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+		\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+		\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+		\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+		\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+		\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+		\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+		
+		\draw[fill=black] (UVL) circle (8pt);
+		\draw[fill=black] (UVR) circle (8pt);
+		\draw[fill=black] (OVL) circle (8pt);
+		\draw[fill=black] (OVR) circle (8pt);
+		\draw[fill=black] (UHL) circle (8pt);
+		\draw[fill=black] (UHR) circle (8pt);
+		\draw[fill=black] (OHL) circle (8pt);
+		\filldraw[color=red] (OHR) circle (8pt);	
+		
+		\draw (UVL) -- node[above] {2} (UVR);
+		\draw (UVL) -- node[left] {3} (UHL);
+		\draw (OVR) -- node[left] {3} (OHR);
+		\draw (OVR) -- node[above left] {1} (UVR);
+		\draw (OHL) -- node[above] {2} (OHR);
+		\draw (OHL) -- node[left] {1} (UHL);	
+		\end{tikzpicture}
+		\caption{Situation nach der ersten Nacht}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Lösung des Problems im Zustand (0,1,1) }
+	
+	\begin{figure}
+		\begin{tikzpicture}[thick,scale=0.21]
+	\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+	\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+	\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+	\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+	\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+	\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+	\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+	\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+	
+	\draw[fill=black] (UVL) circle (8pt);
+	\draw[fill=black] (UVR) circle (8pt);
+	\draw[fill=black] (OVL) circle (8pt);
+	\draw[fill=black] (OVR) circle (8pt);
+	\draw[fill=black] (UHL) circle (8pt);
+	\draw[fill=black] (UHR) circle (8pt);
+	\draw[fill=black] (OHL) circle (8pt);
+	\filldraw[color=red] (OHR) circle (8pt);
+		\end{tikzpicture}
+		\caption{Situation nach der zweiten Nacht}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Lösung des Problems im Zustand (0,0,0) }
+	
+	\begin{figure}
+		\begin{tikzpicture}[thick,scale=0.21]
+			\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+			\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+			\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+			\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+			\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+			\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+			\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+			\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+			
+			\draw[fill=black] (UVL) circle (8pt);
+			\draw[fill=black] (UVR) circle (8pt);
+			\filldraw[color=red] (OVL) circle (8pt);
+			\draw[fill=black] (OVR) circle (8pt);
+			\draw[fill=black] (UHL) circle (8pt);
+			\draw[fill=black] (UHR) circle (8pt);
+			\draw[fill=black] (OHL) circle (8pt);
+			\filldraw[color=black] (OHR) circle (8pt);
+			
+			\draw (UVL) -- node[above] {2} (UVR);
+			\draw (UVL) -- node[above left] {1} (OVL);
+			\draw (UVL) -- node[left] {3} (UHL);
+			\draw (OVR) -- node[above right] {2} (OVL);
+			\draw (OVR) -- node[left] {3} (OHR);
+			\draw (OVR) -- node[above left] {1} (UVR);
+			\draw (OHL) -- node[left] {3} (OVL);
+			\draw (OHL) -- node[above] {2} (OHR);
+			\draw (OHL) -- node[left] {1} (UHL);
+			\draw (UHR) -- node[left] {3} (UVR);
+			\draw (UHR) -- node[left] {1} (OHR);
+			\draw (UHR) -- node[above left] {2} (UHL);	
+		\end{tikzpicture}
+		\caption{Ausgangssituation}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Lösung des Problems im Zustand (0,0,0) }
+	
+	\begin{figure}
+		\begin{tikzpicture}[thick,scale=0.21]
+		\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+		\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+		\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+		\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+		\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+		\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+		\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+		\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+		
+		\draw[fill=black] (UVL) circle (8pt);
+		\draw[fill=black] (UVR) circle (8pt);
+		\filldraw[color=red] (OVL) circle (8pt);
+		\draw[fill=black] (OVR) circle (8pt);
+		\draw[fill=black] (UHL) circle (8pt);
+		\draw[fill=black] (UHR) circle (8pt);
+		\draw[fill=black] (OHL) circle (8pt);
+		\filldraw[color=black] (OHR) circle (8pt);
+		
+		\draw (UHR) -- node[left] {3} (UVR);
+		\draw (UHR) -- node[left] {1} (OHR);
+		\draw (UHR) -- node[above left] {2} (UHL);
+		\end{tikzpicture}
+		\caption{Situation nach der ersten Nacht}
+	\end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Lösung des Problems im Zustand (0,0,0) }
+	
+	\begin{figure}
+		\begin{tikzpicture}[thick,scale=0.21]
+		\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+		\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+		\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+		\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+		\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+		\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+		\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+		\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+		
+		\draw[fill=black] (UVL) circle (8pt);
+		\draw[fill=black] (UVR) circle (8pt);
+		\filldraw[color=red] (OVL) circle (8pt);
+		\draw[fill=black] (OVR) circle (8pt);
+		\draw[fill=black] (UHL) circle (8pt);
+		\draw[fill=black] (UHR) circle (8pt);
+		\draw[fill=black] (OHL) circle (8pt);
+		\filldraw[color=black] (OHR) circle (8pt);
+		\end{tikzpicture}
+		\caption{Situation nach der zweiten Nacht}
+	\end{figure}
 	
 \end{frame}
 
@@ -269,7 +694,11 @@
   \frametitle{Zusammenfassung }
 	
 	\begin{itemize}
-		\item ToDo
+		\item Prozesse in einem verteilten System müssen Entscheidungen mit lokalem Wissen treffen
+		\item Wissen kann mit Hilfe von Kripke-Modellen formalisiert und veranschaulicht werden
+		\item Das Kommunikationssystem hat große Auswirkungen auf das Wissen der Prozesse
+		\item irgendwas zu common knowledge?
+		\item Kommunikation zwischen den Prozessen kann die Problemfindung dramatisch vereinfachen
 	\end{itemize}
 	
 \end{frame}
