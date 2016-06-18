@@ -245,7 +245,7 @@
 		\draw (UHR) -- node[left] {1} (OHR);
 	    \draw (UHR) -- node[above left] {2} (UHL);
 		\end{tikzpicture}
-		\caption{Ausgangssituation des \textit{cheating husbands}-Rätsels}
+		\caption{\textit{Cheating husbands}-Rätsels mit drei Ehepaaren}
 	\end{figure}
 	\begin{itemize}
 		\item Knoten entsprechen Systemzuständen %beschriftet mit den atomaren Aussagen, die in ihm wahr sind
@@ -449,10 +449,10 @@
 \begin{frame}
 	\frametitle{ Zusätzliche Kommunikation }
 	\begin{block}{Problem}
-		In einem verteilten System soll das Konsens-Problem gelöst werden. Die Prozesse haben einen 1-Bit gemeinsamen Speicher. Es gibt maximal zwei verschiedene Werte im System, diese unterscheiden sich nur um eins.
+		In einem verteilten System soll das Konsens-Problem gelöst werden. Die Prozesse haben einen gemeinsamen Speicher von einem Bit. Es gibt maximal zwei verschiedene Werte im System, diese unterscheiden sich nur um eins.
 	\end{block}
 	Dies entspricht dem \textit{cheating husbands}-Rätsel mit folgender Erweiterung:
-	
+	%Zwei Werte: Frauen die nicht betrogen wurden kennen alle, die Betrogenen kennen einen weniger. Müssen sich darauf einigen, welche Anzahl untreuen Ehemänner die tatsächliche ist.
 	\begin{itemize}
 		\item Die Ehefrauen dürfen um Mitternacht in die Luft schießen
 	\end{itemize}
@@ -521,6 +521,57 @@
 		\end{tikzpicture}
 		\caption{Ausgangssituation}
 	\end{figure}
+	\vspace{-0.5cm}
+	\begin{itemize}
+		\item $k_0$, nicht vertreten
+		\item $k_1$ = 1, die betrogenen Ehefrauen
+		\item $k_2$ = 2, die nicht betrogenen Ehefrauen
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Lösung des Problems im Zustand (0,1,1) }
+	
+	\begin{figure}
+		\begin{tikzpicture}[thick,scale=0.21]
+		\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+		\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+		\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+		\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+		\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+		\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+		\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+		\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+		
+		\draw[fill=black] (UVL) circle (8pt);
+		\draw[fill=black] (UVR) circle (8pt);
+		\draw[fill=black] (OVL) circle (8pt);
+		\draw[fill=black] (OVR) circle (8pt);
+		\draw[fill=black] (UHL) circle (8pt);
+		\draw[fill=black] (UHR) circle (8pt);
+		\draw[fill=black] (OHL) circle (8pt);
+		\filldraw[color=red] (OHR) circle (8pt);
+		
+		\draw (UVL) -- node[above] {2} (UVR);
+		\draw (UVL) -- node[above left] {1} (OVL);
+		\draw (UVL) -- node[left] {3} (UHL);
+		\draw (OVR) -- node[above right] {2} (OVL);
+		\draw (OVR) -- node[left] {3} (OHR);
+		\draw (OVR) -- node[above left] {1} (UVR);
+		\draw (OHL) -- node[left] {3} (OVL);
+		\draw (OHL) -- node[above] {2} (OHR);
+		\draw (OHL) -- node[left] {1} (UHL);
+		\draw (UHR) -- node[left] {3} (UVR);
+		\draw (UHR) -- node[left] {1} (OHR);
+		\draw (UHR) -- node[above left] {2} (UHL);	
+		\end{tikzpicture}
+		\caption{Ausgangssituation}
+	\end{figure}
+	\vspace{-0.5cm}
+	\begin{itemize}
+		\item 1. Falls eine Ehefrau von $\mathbf{k_1}$ (mit $k_1 \text{ mod } 3 = 1$) untreuen Ehemännern weiß, schießt sie in der ersten Nacht in die Luft.
+	\end{itemize}
 	
 \end{frame}
 
@@ -556,6 +607,10 @@
 		\end{tikzpicture}
 		\caption{Situation nach der ersten Nacht}
 	\end{figure}
+	\vspace{-0.5cm}
+	\begin{itemize}
+		\item 3. Falls eine Ehefrau von $\mathbf{k_0}$ (mit $k_0 \text{ mod } 3 = 0$) untreuen Ehemännern weiß und \textbf{in der ersten Nacht Schüsse} gefallen sind, erschießt sie ihren Ehemann in der zweiten Nacht.
+	\end{itemize}
 	
 \end{frame}
 
@@ -584,7 +639,10 @@
 		\end{tikzpicture}
 		\caption{Situation nach der zweiten Nacht}
 	\end{figure}
-	
+	\vspace{-0.5cm}
+	\begin{itemize}
+		\item 5. Falls \textbf{in der ersten Nacht Schüsse} gefallen sind, \textbf{in der zweiten Nach keine Schüsse} zu hören waren, erschießen alle Ehefrauen, die in der ersten Nacht bereits geschossen haben, ihren Mann in der dritten Nacht. 
+	\end{itemize}	
 \end{frame}
 
 \begin{frame}
@@ -625,7 +683,56 @@
 		\end{tikzpicture}
 		\caption{Ausgangssituation}
 	\end{figure}
+	\vspace{-0.5cm}
+	\begin{itemize}
+		\item $k_0$ = 0, alle Ehefrauen
+		\item $k_1$, nicht vertreten
+		\item $k_2$, nicht vertreten
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Lösung des Problems im Zustand (0,0,0) }
 	
+	\begin{figure}
+		\begin{tikzpicture}[thick,scale=0.21]
+		\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+		\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+		\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+		\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+		\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+		\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+		\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+		\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+		
+		\draw[fill=black] (UVL) circle (8pt);
+		\draw[fill=black] (UVR) circle (8pt);
+		\filldraw[color=red] (OVL) circle (8pt);
+		\draw[fill=black] (OVR) circle (8pt);
+		\draw[fill=black] (UHL) circle (8pt);
+		\draw[fill=black] (UHR) circle (8pt);
+		\draw[fill=black] (OHL) circle (8pt);
+		\filldraw[color=black] (OHR) circle (8pt);
+		
+		\draw (UVL) -- node[above] {2} (UVR);
+		\draw (UVL) -- node[above left] {1} (OVL);
+		\draw (UVL) -- node[left] {3} (UHL);
+		\draw (OVR) -- node[above right] {2} (OVL);
+		\draw (OVR) -- node[left] {3} (OHR);
+		\draw (OVR) -- node[above left] {1} (UVR);
+		\draw (OHL) -- node[left] {3} (OVL);
+		\draw (OHL) -- node[above] {2} (OHR);
+		\draw (OHL) -- node[left] {1} (UHL);
+		\draw (UHR) -- node[left] {3} (UVR);
+		\draw (UHR) -- node[left] {1} (OHR);
+		\draw (UHR) -- node[above left] {2} (UHL);	
+		\end{tikzpicture}
+		\caption{Ausgangssituation}
+	\end{figure}
+	\vspace{-0.5cm}
+	\begin{itemize}
+		\item 1. Falls eine Ehefrau von $\mathbf{k_1}$ (mit $k_1 \text{ mod } 3 = 1$) untreuen Ehemännern weiß, schießt sie in der ersten Nacht in die Luft.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -657,7 +764,10 @@
 		\end{tikzpicture}
 		\caption{Situation nach der ersten Nacht}
 	\end{figure}
-	
+	\vspace{-0.5cm}
+	\begin{itemize}
+		\item 2. Falls eine Ehefrau von $\mathbf{k_2}$ (mit $k_2 \text{ mod } 3 = 2$) untreuen Ehemännern weiß und \textbf{in der ersten Nacht keine Schüsse} gefallen sind, erschießt sie ihren Ehemann in der zweiten Nacht.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -685,7 +795,10 @@
 		\end{tikzpicture}
 		\caption{Situation nach der zweiten Nacht}
 	\end{figure}
-	
+	\vspace{-0.5cm}
+	\begin{itemize}
+		\item 4. Falls \textbf{in den ersten beiden Nächten keine Schüsse} gefallen sind und $\mathbf{k_0 \ne0}$, erschießen alle Ehefrauen ihren Mann in der dritten Nacht.
+	\end{itemize}
 \end{frame}
 
 \section{Fazit}
