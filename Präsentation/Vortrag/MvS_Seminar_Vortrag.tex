@@ -18,7 +18,7 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{tikz}
-
+\graphicspath{{img/}}
 
 \setlength{\parskip}{2mm}
 
@@ -425,25 +425,191 @@
 \section{Wissen in synchronen und asynchronen Systemen}
 
 \begin{frame}
-	\frametitle{ Titel}
+	\frametitle{ Wissen in asynchronen Systemen}
 	
 	\begin{itemize}
-		\item ToDo
+		\item asynchrone Systeme :
+		\begin{block}{\textit{cheating-Husband}-Erweiterung}
+			\begin{itemize}
+				\item Königin Henrietta II beerbt Henrietta I
+				\item Einführung des Mail-Systems
+				\item Jeder Brief der versandt wird \textit{eventuell} sein Ziel erreichen
+			\end{itemize}
+		\end{block}
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{ Wissen in asynchronen Systemen}
+	
+		\begin{block}{Satz}
+			Wenn es mehr wie einen untreuen Ehemann gibt und dieses Nachricht wird über einen asynchronen Kanal verbreitet, so wird kein Ehemann erschossen.
+		\end{block}
+		
+		\begin{block}{Beweis (logisch)}
+			\begin{itemize}
+				\item Durch asynchrones Versenden gibt es ein \textit{eventuelles} Gemeinsames Wissen
+				\item Der Brief der Königin erreicht unter Umständen ihr Ziel
+				\item Die Adressatin des Briefes kann nicht sicher sein, dass andere Ehefrauen ebenfalls einen Brief erhalten haben
+				\item So kann keine Frau aus \textit{ruhigen} Nächten schließen, dass Ihr Ehemann der Betrüger ist.
+				
+				\item Ähnlichkeit => \textit{Problem der Byzantinischen Generäle}
+			\end{itemize}
+		\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Wissen in synchronen Systemen}
+	
+	\begin{itemize}
+		\item schwache synchrone Systeme (I)
+		\begin{block}{\textit{cheating-Husband}-Erweiterung}
+			\begin{itemize}
+				\item Königin Henrietta III beerbt Henrietta II
+				\item Upgrade des Mail-Systems
+				\item Jeder Brief soll nach Versand maximal 1 Tag benötigten zum Ziel 
+			\end{itemize}
+		\end{block}	
+		
+		\begin{block}{b-common-knowledge}
+			Innerhalb von b Tagen erhält jede Frau einen Brief und weiß, dass innerhalb von b Tagen jede Frau über das gleiche Wissen verfügt.
+		\end{block}
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{ Wissen in synchronen Systemen}
+	
+	\begin{itemize}
+		\item schwache synchrone Systeme (II)
+		\begin{block}{Satz}
+			In schwachen synchronen Systemen mit einer Grenze b beim ausliefern der Briefe, weiß eine Frau exakt von k untreuen Männern, wenn $k*b$ stille Nächte nach dem Erhalte des Briefes vorüber gegangen sind.
+		\end{block}
+	\end{itemize}
+\end{frame}
+\begin{frame}
+	\frametitle{ Wissen in synchronen Systemen}
+	\begin{itemize}
+	\item starke synchrone Systeme :
+		\begin{block}{\textit{cheating-Husband}-Erweiterung}
+			\begin{itemize}
+				\item Königin Henrietta IV beerbt Henrietta III
+				\item Einführen des Kalenders
+				\item Jeder Brief soll nach b Tagen zugestellt sein
+				\item Frauen verlieren langsam vertrauen in die Königin
+				\item Zunächst wurde 1000 Nächte kein Mann mehr erschossen
+				\item Trick:
+					\begin{itemize}
+						\item Neuer Brief der Königin
+						\item Nachricht: "Es gibt mindestens eine gehorsame Ehefrau, deren Ehemann untreu ist."
+					\end{itemize}
+			\end{itemize}
+		\end{block}	
+		
 	\end{itemize}
 	
 \end{frame}
 
+%\begin{frame}
+%	\frametitle{ Wissen in ringbasierten Systemen}
+%	
+%	\begin{itemize}
+%		\item ToDo1
+%	\end{itemize}
+%	
+%\end{frame}
 \section{Varianten des gemeinsamen Wissens}
 
 \begin{frame}
-	\frametitle{ Titel }
-	
+	\frametitle{ Übersicht - Gemeinsames Wissen}
 	\begin{itemize}
-		\item ToDo
+		\item Epsilon gemeinsames Wissen
+		\item Eventuelles gemeinsames Wissen
+		\item Zeitabhängiges gemeinsames Wissen
+		\item Gleichzeitiges gemeinsames Wissen
 	\end{itemize}
 	
 \end{frame}
+\begin{frame}
+	\frametitle{ Epsilon gemeinsames Wissen }
+	
+	\begin{block}{Beschreibung}
+		Die Prozesse treffen eine Vereinbarung innerhalb von $\epsilon$ Zeiteinheiten. Es gilt jedoch zu beachten, dass es in einem asynchronen System keine exakten Zeiten geben kann.
+	\end{block}	
+		\begin{block}{Definition}
+		\begin{itemize}
+			\item $E^\epsilon$, jeder Prozess erhält innherhalb von $\epsilon$ Zeiteinheiten die Nachricht
+			\item $C^\epsilon(\phi) $, größter Fixpunkt von X
+			\item $X=E^\epsilon(\phi \wedge X) $, X ist die freie Variable im Fixpunkt-Operator 
+			%\widehat{=} => entspricht-Zeichen
+		\end{itemize}
+	\end{block}
+	
+\end{frame}
+\begin{frame}
+	\frametitle{ Eventuelles gemeinsames Wissen }
+	
+	\begin{block}{Beschreibung}
+	Die Prozesse treffen eine Vereinbarung in einem globalen Status der Ausführung. Diese kann, aber muss nicht konsistent sein.
+	\end{block}	
+	\begin{block}{Definition}
+	\begin{itemize}
+			\item $E^\Diamond$, jeder Prozess hat eventuell das Wissen (zu einem Zeipunkt der Ausführung)
+			\item $C^\Diamond(\phi) $, größter Fixpunkt von X
+			\item $X=E^\Diamond(\phi \wedge X) $
 
+		\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{ Zeitabhängiges gemeinsames Wissen }
+	
+	\begin{block}{Beschreibung}
+		Prozesse erreichen Vereinbarungen mit einem Status, der die gleiche lokale Zeit hat. 
+		(Sind alle Uhren immer perfekt synchronisiert, so entspricht das Ergebnis regulär dem gemeinsamen Wissen.)
+	\end{block}	
+	\begin{block}{Definition}
+	\begin{itemize}
+			\item $K^T_i(\phi)$, Prozess \textit{i} weiß $\phi$ zum lokalen Zeitpunk T
+			\item $E^T(\phi) = \bigwedge_i K^T_i(\phi) $ und $C^T(\phi)$, größter Fixpunkt von X
+			\item $X=E^T(\phi \wedge X)$
+
+		\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}
+	\frametitle{ Gleichzeitiges gemeinsames Wissen }
+	
+		\begin{block}{Beschreibung}
+		Prozesse erreichen lokal einen konsistenten Status, welcher zu einem konsistenten Schnittpunkt gehört. Wenn Prozess $P_i$ gemeinsames Wissen von $\phi$ erlangen will, so hat Prozess $P_j$ das selbe wissen in einem Konsistenten Status.
+	\end{block}	
+
+\end{frame}
+\begin{frame}
+\frametitle{ Gleichzeitiges gemeinsames Wissen }
+	\begin{block}{Definition}
+	\begin{itemize}
+			\item (a,c)	$\models$ $\phi$, wenn Schnittpunk c von Ausführung a = TRUE
+			\item (a,c)	$\models$ $K_i(\phi)$, wenn $\forall(a',c')$, $((a',c') \sim_i (a,c) \implies (a',c') \models \phi)$
+			\item (a,c)	$\models$ $P_i(\phi)$, wenn $\exists(a,c')$, $((a,c') \sim_i (a,c) \wedge (a,c') \models \phi)$
+			\item (a,c)	$\models$ $E^{C^0}(\phi)$, wenn $(a,c) \models \phi$
+			\item (a,c)	$\models$ $E^{C^1}(\phi)$, wenn $(a,c) \models \bigwedge_{i\epsilon N}\; K_i P_i(\phi)$
+			\item (a,c)	$\models$ $E^{C^k+1}(\phi)$, wenn $(a,c) \models \bigwedge_{i\epsilon N}\; K_i P_i(E^{C^k}(\phi))$ für $k \geq 1$
+			\item (a,c)	$\models$ $C^C(\phi)$, wenn $(a,c) \models X = E^C(X \wedge \phi)$ 
+			$C^c \implies \bigwedge_{k\epsilon Z*}(E^c)^k(\phi) $ 
+		\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}
+	\frametitle{ Gleichzeitiges gemeinsames Wissen }
+	
+	\begin{figure}[H]
+\centering
+      \includegraphics[width=0.9\textwidth]{three_phase_algo.pdf}
+  %\caption{ Historischer Verlauf von standortbezogenen Diensten \cite{4487093}}
+\label{pic:lbs_history}
+\end{figure}
+Komplexität: 3(n-1)
+\end{frame}
 \section{Zusätzliche Kommunikation}
 
 \begin{frame}
