@@ -331,6 +331,37 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{ Kripke-Modelle zum \textit{cheating husbands}-Rätsel }
+	\medskip
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}[thick,scale=0.21]
+		\coordinate[label={180:\text{(1,0,0)}}] (UVL) at (0,0,12);
+		\coordinate[label={0:\text{(1,1,0)}}] (UVR) at (12,0,12);
+		\coordinate[label={180:\text{(0,0,0)}}] (OVL) at (0,12,12);
+		\coordinate[label={-120:\text{(0,1,0)}}] (OVR) at (12,12,12);
+		\coordinate[label={-86:\text{(1,0,1)}}] (UHL) at (0,0,0);
+		\coordinate[label={0:\text{(1,1,1)}}] (UHR) at (12,0,0);
+		\coordinate[label={180:\text{(0,0,1)}}] (OHL) at (0,12,0);
+		\coordinate[label={0:\text{(0,1,1)}}] (OHR) at (12,12,0);
+		
+		\draw[fill=black] (UVL) circle (8pt);
+		\draw[fill=black] (UVR) circle (8pt);
+		\draw[fill=black] (OVL) circle (8pt);
+		\draw[fill=black] (OVR) circle (8pt);
+		\draw[fill=black] (UHL) circle (8pt);
+		\draw[fill=black] (UHR) circle (8pt);
+		\draw[fill=black] (OHL) circle (8pt);
+		\filldraw[color=red] (OHR) circle (8pt);	
+		
+		\end{tikzpicture}
+		\caption{Kripke-Modell nach der zweiten Nacht.}
+	\end{figure}
+	
+\end{frame}
+
+
+\begin{frame}
 	\frametitle{ Logikoperatoren in Kripke-Modellen }
 	
 	\begin{figure}
