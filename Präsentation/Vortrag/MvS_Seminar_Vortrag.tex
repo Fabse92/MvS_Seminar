@@ -530,7 +530,7 @@
 				\item Trick:
 					\begin{itemize}
 						\item Neuer Brief der Königin
-						\item Nachricht: "Es gibt mindestens eine gehorsame Ehefrau, deren Ehemann untreu ist."
+						\item Nachricht: "'Es gibt mindestens eine gehorsame Ehefrau, deren Ehemann untreu ist."'
 					\end{itemize}
 			\end{itemize}
 		\end{block}	
@@ -550,15 +550,21 @@
 \section{Varianten des gemeinsamen Wissens}
 
 \begin{frame}
-	\frametitle{ Übersicht - Gemeinsames Wissen}
+	\frametitle{ Übersicht - Gemeinsames Wissen (asynchrone Systeme)}
 	\begin{itemize}
+		\item Es muss eine Vereinbarung zwischen den Prozessen getroffen werden.
+		\item Gibt keine Simultaneität 
+		\item Es gibt abgeschwächte Formen, die es einfacher machen:
+		\begin{itemize}
 		\item Epsilon gemeinsames Wissen
 		\item Eventuelles gemeinsames Wissen
 		\item Zeitabhängiges gemeinsames Wissen
 		\item Gleichzeitiges gemeinsames Wissen
 	\end{itemize}
+	\end{itemize}		
 	
 \end{frame}
+
 \begin{frame}
 	\frametitle{ Epsilon gemeinsames Wissen }
 	
@@ -1007,7 +1013,8 @@ Komplexität: 3(n-1)
 		\item Prozesse in einem verteilten System müssen Entscheidungen mit lokalem Wissen treffen
 		\item Wissen kann mit Hilfe von Kripke-Modellen formalisiert und veranschaulicht werden
 		\item Das Kommunikationssystem hat große Auswirkungen auf das Wissen der Prozesse
-		\item irgendwas zu common knowledge?
+		\item In asynchronen Systemen kann nicht immer bewerkstelligt werden, dass die gewünschte Nachricht beim Empfänger ankommt.
+		\item Je nach Anwendungsfall gibt es Möglichkeiten für asynchrone Systeme "'synchrone Aktionen"' bewerkstelligen zu können.
 		\item Kommunikation zwischen den Prozessen kann die Problemfindung dramatisch vereinfachen
 	\end{itemize}
 	
