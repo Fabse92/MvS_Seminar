@@ -1,25 +1,39 @@
 \section{Zusätzliche Kommunikation}
 \label{Kommuniaktion}
-In den bisherigen Betrachtungen der Varianten zum \textit{cheating-husbands}-Rätsel war der Informationsaustausch zwischen den Ehefrauen stark eingeschränkt.
-Die Kommunikation einer Ehefrau war darauf beschränkt mitzuteilen, ob sie weiß, dass sie betrogen wurde.
+In den bisherigen Betrachtungen der Varianten zum \textit{cheating-husbands}-Rätsel war die Kommunikationsfähigkeit zwischen den Ehefrauen stark eingeschränkt.
+Die Kommunikation einer Ehefrau war darauf beschränkt mitzuteilen, ob sie weiß, dass sie betrogen wurde. 
 Wenn sie dies mit Sicherheit sagen konnte, erschießt sie ihren Ehemann in der Nacht, die anderen Ehefrauen hörten den Schuss und wussten somit, dass eine andere Ehefrau sich sicher war, dass ihr Ehemann betrogen hat.\\
-Wenn diese Beschränkung aufgehoben wird, können ohne die Mächtigkeit des Systems zu erhöhen, wesentlich effizientere Kommunikationsprotokolle genutzt werden, um das Problem zu lösen.
+Wenn diese Beschränkung etwas gelockert wird, können ohne die Mächtigkeit des Systems signifikant zu erhöhen, wesentlich effizientere Kommunikationsprotokolle genutzt werden, um das Problem zu lösen.
 Um dies zu zeigen abstrahieren wir nun wieder von dem, als sehr entscheidend festgestellten, Nachrichtensystem. 
 Nachrichten der Königin werden daher ohne Verzögerung verteilt, und jeder Ehefrau ist dies bekannt.
-Bei der ursprünglichen Lösung aus der Motivation wurde das Problem in n Tagen Tagen gelöst, wobei n die Anzahl der untreuen Ehemänner ist.
-Y. Moses et al. \cite{moses1986cheating} (vgl. S.175) zeigen, dass das Problem mit zusätzlicher Kommunikation mit einem Algorithmus gelöst werden kann, der höchstens drei Tage benötigt.
-Die Mächtigkeit des Systems bleibt hier insofern gleich, als das weiterhin nur über Schüsse um Mitternacht kommuniziert werden kann. Dies entspricht einer binären Nachricht pro Nacht, entweder sind ein oder mehr Schüsse in der Nacht gefallen oder keiner.\\
-Zunächst können wir mit einer an \cite{moses1986cheating} angelegten Überlegung beweisen, dass es kein Protokoll gibt, das weniger als drei Nächte unabhängig von der Probleminstanz benötigt:\\
+Bei der ursprünglichen Lösung aus der Motivation wurde das Problem in n Tagen Tagen korrekt gelöst, wobei n die Anzahl der untreuen Ehemänner ist.
+Y. Moses et al. \cite{moses1986cheating} (vgl. S.175) zeigen, dass das Problem mit zusätzlicher Kommunikation mit einem Algorithmus gelöst werden kann, der höchstens drei Tage benötigt. Dabei wird die Kommunikationsfähigkeit der Ehefrauen um das Schießen in die Luft ergänzt. Eine \glqq Nachricht\grqq{} einer Ehefrau ist somit nicht mehr an ihr Wissen über die Untreue ihres Ehemannes gekoppelt.
+Die Mächtigkeit des Systems wird dabei insofern auf ähnlichem Niveau gehalten, als das weiterhin nur über Schüsse um Mitternacht kommuniziert werden kann. Dies entspricht einer binären Nachricht pro Nacht, ein oder mehrere Schüsse sind in der Nacht gefallen oder keiner.\medskip
+
+Das \textit{cheating husbands}-Rätsel mit dieser Erweiterung der erlaubten Kommunikation kann auch technischer formuliert werden (vgl. \cite{moses1986cheating} S. 175): 
+In einem verteilten System soll das Konsens-Problem gelöst werden. Die Prozesse haben einen gemeinsamen Speicher von einem Bit. Es gibt maximal zwei verschiedene Werte im System, diese unterscheiden sich nur um eins.\\
+Die Analogie zum \textit{cheating husbands}-Rätsel kann gezogen werden, denn auch dort wird das Konsens-Problem gelöst, da sich alle Ehefrauen auf die korrekte Anzahl untreuer Ehemänner einigen muss.
+Es gibt zwei unterschiedliche Annahmen von der korrekten Anzahl untreuer Ehemänner und die entsprechenden Zahlen unterscheiden sich nur um eins. Die betrogenen Ehefrauen kennen einen untreuen Ehemann weniger, als die nicht betrogenen.
+Durch die Erweiterung der Kommunikation um das in die Luft Schießen kann das Schießen als die freie Belegung eines gemeinsamen Speichers auf den Wert 1 angesehen werden, fällt kein Schuss wird der Wert auf 0 gesetzt.
+Der Wert des gemeinsamen Speichers ist jeder Ehefrau bewusst.
+\medskip
+
+Zunächst können wir nun mit einer an \cite{moses1986cheating} angelegten Überlegung beweisen, dass es kein Protokoll gibt, das weniger als drei Nächte unabhängig von der Probleminstanz benötigt:\\
 
 Betrachten wir eine Probleminstanz mit k untreuen Ehemännern.
 Im Allgemeinen kann es nun zwei verschiedene Anzahlen von untreuen Ehemännern geben, von denen die Ehefrauen wissen.
 Entweder kennen sie alle k, wenn sie selbst nicht betrogen wurden, oder sie kennen $k-1$, wenn sie betrogen wurden.
-Da keine der Ehefrauen weiß, ob sie betrogen wurde, wissen sie nur, dass die wahre Anzahl untreuer Ehemänner entweder $k_i$ oder $k_i+1$ ist.
+Die Anzahl untreuer Ehemänner, von denen die i-te Ehefrau weiß, werde nun als $k_i$ bezeichnet.
+Da keine der Ehefrauen weiß, ob sie selbst betrogen wurden, weiß jede von ihnen nur, dass die wahre Anzahl untreuer Ehemänner entweder $k_i$ oder $k_i+1$ ist.
 Somit gibt es Ehefrauen die wissen, dass es $k-1$ oder $k$ und welche die wissen, dass es $k$ oder $k+1$ untreue Ehemänner gibt.
+Insgesamt gibt es also drei verschiedene Anzahlen untreuer Ehemänner aus denen die richtige Anzahl bestimmt werden muss.
 Wenn die wahre Anzahl untreuer Ehemänner bekannt ist, ist das System vollständig bestimmt, jede Ehefrau weiß dann, ob sie ihren Mann erschießen muss.
 Jede Nacht kann allerdings nur eine binäre Information bekannt gemacht werden, daher kann im Allgemeinen jede Nacht nur einer der drei möglichen Anzahlen von untreuen Ehemännern ausgeschlossen werden.
 
-So könnte ein Schuss in der ersten Nacht bedeuten, dass es entweder $x$ oder $y$ untreue Ehemänner sind. Eine zweite Nacht müsste dann noch abgewartet werden, um eindeutig zu bestimmen, welcher der beiden Fälle der Wahrheit entspricht. Wenn kein Schuss in der ersten Nacht fallen würde, wäre hier klar, dass es weder $x$ noch $y$ untreue Ehemänner sind. Es kann also durchaus Fälle geben, in denen das Problem in zwei Nächten gelöst ist. Es kann aber kein Protokoll geben, dass das Problem unabhängig von $k$ immer in weniger als drei Nächten löst.\\
+So könnte ein Schuss in der ersten Nacht bedeuten, dass es entweder $k-1$ oder $k$ untreue Ehemänner sind.
+Eine zweite Nacht müsste dann noch abgewartet werden, um eindeutig zu bestimmen, welcher der beiden Fälle der Wahrheit entspricht.
+Beispielsweise würde ein weiterer Schuss in der zweiten Nacht bedeuten, dass es tatsächlich $k-1$ untreue Ehemänner sind.
+Wenn kein Schuss in der ersten Nacht fallen würde, wäre bereits klar, dass es weder $k-1$ noch $k$ untreue Ehemänner sind, sodass es $k+1$ sein müssen. Es kann also durchaus Fälle geben, in denen das Problem in zwei Nächten gelöst ist. Es kann aber kein Protokoll geben, dass das Problem unabhängig von $k$ immer in weniger als drei Nächten löst.\\
 
 \subsection{Protokoll mit zusätzlicher Kommunikation}
 
@@ -34,15 +48,15 @@ Die folgende leicht modifizierte Version des Kommunikationsprotokolls von Y. Mos
 \end{itemize}
 Das Protokoll kann folgendermaßen erklärt werden:\\
 (Zu 1.) In der ersten Nacht wird die Fallunterscheidung gemacht, ob es Ehefrauen gibt, die von $k_1$ untreuen Ehemännern wissen oder nicht.
-(Zu 2.) Falls dies nicht der Fall ist, ist bereits bekannt, dass es höchstens welche geben kann, die von $k_0$ oder $k_2$ untreuen Ehemännern wissen. Alle Ehefrauen, die von $k_2$ untreuen Ehemännern wissen, können ihren Mann nun töten, denn entweder wissen alle Ehefrauen von $k_2$ untreuen Ehemännern, dann sind alle betrogen wurden, oder die Ehefrauen, die nur $k_2$ untreue Ehemänner kennen, wissen von einem weniger, als die, die $k_0$ kennen.
-(Zu 3.) Falls in der ersten Nacht geschossen wurde, können die Frauen, die von $k_0$ untreuen Ehemännern ihren Ehemann erschießen. Die Begründung verläuft analog zu der vorherigen.
+(Zu 2.) Falls in der ersten Nacht nicht geschossen wurde, ist bereits bekannt, dass es höchstens Ehefrauen geben kann, die von $k_0$ oder $k_2$ untreuen Ehemännern wissen. Alle Ehefrauen, die von $k_2$ untreuen Ehemännern wissen, können ihren Mann nun töten, denn entweder wissen alle Ehefrauen von $k_2$ untreuen Ehemännern, dann sind alle betrogen wurden, oder die Ehefrauen, die nur $k_2$ untreue Ehemänner kennen, wissen von einem weniger, als die, die $k_0$ kennen.
+(Zu 3.) Falls in der ersten Nacht geschossen wurde, können die Frauen, die von $k_0$ untreuen Ehemännern ihren Ehemann erschießen. Die Begründung verläuft analog zu der vorherigen, da es nun nur Ehefrauen geben kann, die von $k_0$ oder $k_1$ untreuen Ehemännern wissen.
 (Zu 4.) Falls in den ersten beiden Nächten kein Schuss gefallen ist, wissen alle Ehefrauen von $k_0$ untreuen Ehemännern, sodass es entweder keinen einzigen untreuen Ehemann gibt, dann passiert nichts, oder alle Ehemänner waren untreu, dann werden alle erschossen.
-(Zu 5.) Falls in der ersten Nacht Schüsse fielen in der zweiten jedoch nicht, kann es nur Ehefrauen geben, die von $k_1$ oder $k_2$ untreuen Ehemännern wissen. Aus einem analogen Argument, wie zu 1. und 2. können dann die Ehefrauen, die von $k_1$ untreuen Ehemännern wissen, ihren Ehemann erschießen.\\
+(Zu 5.) Falls in der ersten Nacht Schüsse fielen in der zweiten jedoch nicht, kann es nur Ehefrauen geben, die von $k_1$ oder $k_2$ untreuen Ehemännern wissen. Aus einem analogen Argument, wie zu 1. und 2. können dann die Ehefrauen, die von $k_1$ untreuen Ehemännern wissen, ihren Ehemann erschießen.\medskip
 
-Die Fähigkeit untereinander zu Kommunizieren ermöglicht es, dass in diesem Kommunikationsprotokoll keine Notwendigkeit darin besteht, dass die Königin verkündet, dass es mindestens einen untreuen Ehemann gibt. Tatsächlich funktioniert das Protokoll auch für den Fall, dass es keinen untreuen Ehemann gibt.
-Mit Hilfe der Veranschaulichung von Kripke-Modellen können wir nun die korrekte Funktionsweise des Protokolls an dem Beispiel aus Kapitel \ref{Kripke-Modelle} betrachten:\\
+Die Fähigkeit untereinander zu Kommunizieren ermöglicht es, dass in diesem Kommunikationsprotokoll keine Notwendigkeit darin besteht, dass die Königin verkündet, dass es mindestens einen untreuen Ehemann gibt. Tatsächlich funktioniert das Protokoll auch für den Fall, dass es keinen einzigen untreuen Ehemann gibt.
+Mit Hilfe der Veranschaulichung von Kripke-Modellen können wir nun die korrekte Funktionsweise des Protokolls an dem Beispiel aus Kapitel \ref{Kripke-Modelle} betrachten, bei dem (0,1,1) der wahre Zustand war:\\
 Von der ersten zur zweiten Nacht wird der in Abbildung \ref{kom_(0,1,1)_1} dargestellte Übergang vollzogen, das Problem wird also direkt gelöst.
-Der korrekte Zustand ist (0,1,1), somit ist die tatsächliche Anzahl der untreuen Ehemänner $k=2$. Die Ehefrauen 2 und 3 kennen $k_1 = 1$ untreue Ehemänner und Ehefrau 1 weiß von allen $k_2 = 2$ untreuen Ehemännern.
+Die tatsächliche Anzahl der untreuen Ehemänner im Zustand (0,1,1) ist $k=2$. Die Ehefrauen 2 und 3 kennen $k_1 = 1$ untreue Ehemänner und Ehefrau 1 weiß von allen $k_2 = 2$ untreuen Ehemännern.
 In der ersten Nacht schießen die beiden Ehefrauen mit $k_1$ in die Luft. Es gibt also mindestens einen untreuen Ehemann und höchstens zwei.
 Dementsprechend sind in Abbildung \ref{kom_(0,1,1)_1} die Zustände (0,0,0) und (1,1,1) ausgeschlossen worden.
 
@@ -170,7 +184,7 @@ Somit können auch alle Zustände ausgeschlossen werden, in denen es nur einen u
 	\label{kom_(0,1,1)_2}
 \end{figure}
 
-Betrachten wir den Spezialfall, dass (0,0,0) der wahre Zustand ist, mit Hilfe der Kripke-Modelle. Alle Ehefrauen kennen also $k_0 = 0$ untreue Ehemänner.
+Betrachten wir abschließend noch, veranschaulicht mit Kripke-Modellen, den Spezialfall, dass (0,0,0) der wahre Zustand ist. Alle Ehefrauen kennen also $k_0 = 0$ untreue Ehemänner.
 In der ersten Nacht sind keine Schüsse zu hören, sodass alle Zustände mit einem untreuen Ehemann ausgeschlossen werden können. Es ergibt sich die Situation aus \ref{kom_(0,0,0)_1}.
 
 \begin{figure}
@@ -237,7 +251,7 @@ In der ersten Nacht sind keine Schüsse zu hören, sodass alle Zustände mit ein
 	\label{kom_(0,0,0)_1}
 \end{figure}
 
-Zu diesem Zeitpunkt ist bereits jeder Ehefrau bewusst, dass (0,0,0) der korrekte Zustand ist. Wenn das Protokoll dennoch weiter ausgeführt wird ergibt sich der Übergang aus \ref{kom_(0,0,0)_2}, da keine Ehefrau von $k_2$ untreuen Ehemännern weiß.
+Zu diesem Zeitpunkt ist bereits jeder Ehefrau bewusst, dass (0,0,0) der korrekte Zustand ist. Wenn das Protokoll dennoch weiter ausgeführt wird, ergibt sich der Übergang aus \ref{kom_(0,0,0)_2}, da keine Ehefrau von $k_2$ untreuen Ehemännern weiß.
 Da in den ersten beiden Nächten kein Schuss gefallen ist, aber $k_0 = 0$ wird niemand erschossen, und das Problem wurde korrekt gelöst.
 
 \begin{figure}
