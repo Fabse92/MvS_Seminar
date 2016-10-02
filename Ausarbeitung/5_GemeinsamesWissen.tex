@@ -1,6 +1,6 @@
 \section{Varianten des gemeinsamen Wissens}
 \label{GemeinsamesWissen}
-In Kap. 4 wurden bereits asynchrone Systeme dargestellt. Dieses Kapitel behandelt Erweiterungen für asynchrone Systeme um einen Grad an Zuverlässigkeit zu gewährleisten. Die Prozesse müssen Vereinbarungen treffen. Dies bedeutet es wird eine Simultanität unter den Prozessen geben. 
+In Kap. 4 wurden bereits asynchrone Systeme dargestellt. Dieses Kapitel behandelt Erweiterungen für asynchrone Systeme um einen Grad an Zuverlässigkeit zu gewährleisten. Die Prozesse müssen Vereinbarungen treffen. Dies bedeutet, dass es eine Simultanität unter den Prozessen geben wird. 
 %########################################################################################
 % Section: Epsilon common knowledge
 %########################################################################################
@@ -8,7 +8,7 @@ In Kap. 4 wurden bereits asynchrone Systeme dargestellt. Dieses Kapitel behandel
 \label{epsilon_comm_know}
 Eine Art der Vereinheitlichung in asynchronen Systemen kann mit Hilfe von Zeiteinheiten gewährleistet werden. Sie werden als Epsilon Zeiteinheiten bezeichnet. Da es keine genauen Zeiteinheiten in asynchronen Systemen gibt, wird mit diesen Zeiteinheiten gearbeitet. Jeder Prozess verfügt innerhalb dieser Zeiteinheiten über ein gemeinsames Wissen.\\\\ Sie sind wie nachfolgend Definiert:
 \begin{itemize}
-			\item $E^\epsilon$, jeder Prozess erhält innherhalb von $\epsilon$ Zeiteinheiten die Nachricht
+			\item $E^\epsilon$, jeder Prozess erhält innerhalb von $\epsilon$ Zeiteinheiten die Nachricht
 			\item $C^\epsilon(\phi) $, größter Fixpunkt von X
 			\item $X=E^\epsilon(\phi \wedge X) $, X ist die freie Variable im Fixpunkt-Operator 
 			%\widehat{=} => entspricht-Zeichen
@@ -19,7 +19,7 @@ Der größte Fixpunkt für das gemeinsame Wissen wird in C sichtbar.
 %########################################################################################
 \subsection{Eventual common knowledge}
 \label{eventual_comm_know}
-Bei eventuellem gemeinsamen Wissen treffen die Prozesse Vereinbarungen in einem globalen Status der Ausführung. Sie kann konsistent sein, muss dies aber nicht sein. Hieraus wird grundsätzliche eine Basis für gemeinsames Wissen geschaffen. \\\\
+Bei eventuellem gemeinsamen Wissen treffen die Prozesse Vereinbarungen in einem globalen Status der Ausführung. Sie kann konsistent sein, muss dies aber nicht sein. Hieraus wird grundsätzlich eine Basis für gemeinsames Wissen geschaffen. \\\\
 Eventuelles gemeinsames Wissen wird wie folgt definiert:
 \begin{itemize}
 			\item $E^\Diamond$, jeder Prozess hat eventuell das Wissen (zu einem Zeipunkt der Ausführung)
@@ -58,7 +58,7 @@ Im Nachgang folgen die Definitionen für gleichzeitiges gemeinsames Wissen:
 			\item (a,c)	$\models$ $C^C(\phi)$, wenn $(a,c) \models X = E^C(X \wedge \phi)$ 
 			$C^c \implies \bigwedge_{k\epsilon Z*}(E^c)^k(\phi) $ 
 		\end{itemize}
-Im Operator E  weiß jeder Prozess im gegebenen Schnitt, dass p wahr ist in irgendeinem Schnitt, welcher mit dem eigenen lokalen Schnitt p konsistent ist. \\\\ 
+Im Operator E weiß jeder Prozess im gegebenen Schnitt, dass p wahr ist in irgendeinem Schnitt, welcher mit dem eigenen lokalen Schnitt p konsistent ist. \\\\ 
 Durch den Operator C wird ein konsistenter Schnitt erreicht. D.h. in einem konsistenten Zustand mit eigenem lokalen Schnitt wird p wahr und alle anderen Prozesse haben das gleiche gemeinsame Wissen. Es bleibt noch anzumerken, dass die Prozesse allen Protokollen unterliegen, welche Vereinbarungen über die Eigenschaften des globalen Status inne haben. \\\\
 Um dies etwas praktischer zu Erläutern ist im Nachgang ein Algorithmus abgebildet, mit welchem ein Informationsaustausch bewerkstelligt werden kann: 
 
@@ -71,10 +71,10 @@ Um dies etwas praktischer zu Erläutern ist im Nachgang ein Algorithmus abgebild
 \end{figure}
 Durch den sogenannten Drei-Phasen Algorithmus (Abb. 4) wird gewährleistet, dass alle Prozesse einen Zustand erreichen, welcher einen sicheren und konsistenten Informationsaustausch dient. Er wird in 4 Schritte untergliedert:
 \begin{enumerate}
-\item Im ersten Schritt sendet ein Initiator eine Nachricht aus um die anderen Prozesse auf einen Informationsaustausch vorzubereiten.
-\item Nach dem der Prozess diese Nachricht erhalten hat werden zunächst alle anderen Operationen gesperrt und ein konsistenter Zustand eingenommen ehe der Initiator benachrichtigt wird, dass der Prozess bereit für einen Informationsaustausch ist.
-\item Nachdem der Initiator von allen Prozessen benachrichtigt wurde, dass diese bereit für den Austausch sind erreicht dieser selbst einen konsistenten Zustand und benachrichtigt die anderen.
+\item Im ersten Schritt sendet ein Initiator eine Nachricht aus, um die anderen Prozesse auf einen Informationsaustausch vorzubereiten.
+\item Nachdem der Prozess diese Nachricht erhalten hat, werden zunächst alle anderen Operationen gesperrt und ein konsistenter Zustand eingenommen, ehe der Initiator benachrichtigt wird, dass der Prozess bereit für einen Informationsaustausch ist.
+\item Nachdem der Initiator von allen Prozessen benachrichtigt wurde, dass diese bereit für den Austausch sind, erreicht dieser selbst einen konsistenten Zustand und benachrichtigt die anderen.
 \item Im letzten Schritt findet nun der eigentliche Nachrichtenaustausch statt. 
 \end{enumerate}
 
-Der Alogrithmus ist sehr klar strukturiert und bietet die Möglichkeit von sicherer Übertragung von Informationen. So kann innerhalb von asynchronen Systemen mit Daten gearbeitet werden, welche auf gemeinsamen Wissen beruhen ohne das es Unsicherheiten im Bezug auf die Teilnehmer gibt. 
+Der Algorithmus ist sehr klar strukturiert und bietet die Möglichkeit von sicherer Übertragung von Informationen. So kann innerhalb von asynchronen Systemen mit Daten gearbeitet werden, welche auf gemeinsamen Wissen beruhen ohne das es Unsicherheiten im Bezug auf die Teilnehmer gibt. 
