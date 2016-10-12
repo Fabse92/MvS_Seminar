@@ -9,7 +9,7 @@ In dieser Arbeit soll betrachtet werden wie lokale Prozesse mit Hilfe von Wissen
 \label{motivation}
 Um das Konzept von verteiltem Wissen zu veranschaulichen nutzen Moses et al. \cite{moses1986cheating} das \textit{cheating husbands}-Rätsel (vgl. \cite{moses1986cheating} S. 168 ff.).
 Dabei handelt es sich um ein Induktions-Rätsel von dem es viele Varianten gibt (\textit{unfaithful wives problem}, \textit{blue eyes problem}, \textit{muddy children puzzle}). Wir werden dieses Beispiel als durchgehende Veranschaulichung der Theorie verwenden.\\
-Das Rätsel wird im Rahmen einer Geschichte dargelegt: Die Königin Henrietta I von Atlantis möchte das Untreue-Problem in der Stadt Mamajorca lösen unter dem die verheirateten Frauen leiden; die Ehemänner betrügen ihre Frauen mit anderen Frauen der Stadt.
+Das Rätsel wird im Rahmen einer Geschichte dargelegt: Die Königin Henrietta I von Atlantis möchte das Untreue-Problem in der Stadt Mamajorca lösen, unter dem die verheirateten Frauen leiden; die Ehemänner betrügen ihre Frauen mit anderen Frauen der Stadt.
 Folgende Informationen können als gemeinsames Wissen unter der Bevölkerung der Stadt vorausgesetzt werden:
 \begin{itemize}
 	\item Die Königin sagt die Wahrheit.
@@ -19,7 +19,7 @@ Folgende Informationen können als gemeinsames Wissen unter der Bevölkerung der
 	\item Keine Ehefrau weiß, ob ihr Ehegatte sie betrügt.
 	\item Jede Ehefrau weiß, welche der anderen Frauen betrogen worden sind.
 \end{itemize}
-Um das Untreue-Problem zu lösen lässt Henrietta I alle Ehefrauen der Stadt auf dem Marktplatz zusammenkommen und verkündet dann vor ihnen, dass es mindestens einen untreuen Ehemann gibt ($n \ge 1$).
+Um das Untreue-Problem zu lösen, lässt Henrietta I alle Ehefrauen der Stadt auf dem Marktplatz zusammenkommen und verkündet dann vor ihnen, dass es mindestens einen untreuen Ehemann gibt ($n \ge 1$).
 Die Königin verbietet (aufgrund der Etikette), dass die Ehefrauen miteinander über die untreuen Ehemänner reden.
 Sollte eine Ehefrau jedoch herausfinden, dass ihr Gatte untreu war, so muss sie ihn um Mitternacht des selben Tages erschießen.\medskip
 
@@ -27,7 +27,7 @@ Bei diesem Verhaltensprotokoll der Königin handelt es sich um einen Lösungs-vo
 Das Untreue-Problem wird korrekt gelöst, wenn irgendwann alle untreuen Ehemänner erschossen wurden, während alle treuen Ehemänner am Leben gelassen wurde.\\
 
 Die Korrektheit des Verhaltensprotokolls wird im folgenden Satz ausgedrückt:\\
-Wenn es $n$ untreue Ehemänner zum Zeitpunkt der Verkündung von Henrietta I gab, so geschieht zunächst $n-1$ Nächte lang nicht und dann werden alle untreuen Ehemänner in der n-ten Nacht erschossen.\medskip
+Wenn es $n$ untreue Ehemänner zum Zeitpunkt der Verkündung von Henrietta I gab, so geschieht zunächst $n-1$ Nächte lang nichts und dann werden alle untreuen Ehemänner in der n-ten Nacht erschossen.\medskip
 
 Der Beweis des Satzes kann mittels vollständiger Induktion über die Anzahl der untreuen Ehemänner in der Stadt vollzogen werden:\\
 \textbf{Induktionsanfang:} Angenommen es gäbe nur einen ($n=1$) untreuen Ehemann. Jede Ehefrau weiß, welche der anderen Ehefrauen betrogen wurden. Daher gäbe es eine Ehefrau, die betrogene Ehefrau, die wüsste, dass keine der anderen Ehefrauen betrogen wurden. Da es mindestens einen untreuen Ehemann gibt kann sie darauf schließen, dass dies ihr eigener Mann sein muss. Dementsprechend wird der eine untreue Ehemann noch am selben Tag also in der ersten Nacht erschossen.\\
@@ -48,6 +48,6 @@ Um dennoch mit asynchronen Systemen in der Praxis arbeiten zu können, nutzt man
 Weitere Fragestellungen des Themas beziehen sich auf die Art des Nachrichtensystems, welches sich auf das Wissen der lokalen Prozesse auswirkt und wie die Informationsbeziehungen zwischen den Prozessen visuell dargestellt werden können.
 
 \subsection{Aufbau der Arbeit}
-Im Kapitel \ref{Logik} werden zunächst die Logikoperatoren eingeführt, mit denen in verteilten System Wissen abgeleitet werden kann.
+Im Kapitel \ref{Logik} werden zunächst die Logikoperatoren eingeführt, mit denen in verteilten Systemen Wissen abgeleitet werden kann.
 Um die Beziehungen zwischen den Prozessen und die Entwicklung von Wissen in verteilten Systemen intuitiv darzustellen, werden in Kapitel \ref{Kripke-Modelle} Kripke-Modelle eingeführt. Kapitel \ref{sync_vs_async} geht der Frage nach, wie das ableitbare Wissen in einem System davon abhängt, ob das Nachrichtensystem synchron oder asynchron funktioniert. Um das Konsens-Problem in asynchronen Systemen zu vermeiden werden in Kapitel \ref{GemeinsamesWissen} schwächere Definitionen von gemeinsamen Wissen vorgestellt.
 Abschließend wird die Arbeit in Kapitel \ref{Zusammenfassung} resümiert.
