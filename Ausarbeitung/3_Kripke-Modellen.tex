@@ -4,7 +4,7 @@ Das Kripke-Modell eines verteilten Systems mit kleiner Anzahl von Prozessen kann
 Dazu wird ein Graph gezeichnet, dessen Bestandteile den Objekten des Kripke-Modell Tupels entsprechen.
 Jeder Systemzustand $s\in S$ entspricht einem Knoten, der mit der Belegung von $\pi$ für die atomaren Aussagen $\Phi$ beschriftet wird. Eine Kante wird zwischen zwei Knoten gezeichnet, wenn es mindestens einen Prozess gibt, der die repräsentierten Systemzustände nicht voneinander unterscheiden kann. Sie wird mit den Nummern aller Prozesse beschriftet für die dies gilt.
 Der Graph ist dementsprechend bidirektional und reflexiv.\\
-Mit Hilfe der Erreichbarkeit können die Definitionen zu den \textit{jeder-weiß}- und den \textit{gemeinsames Wissen}-Operator auf diese Graphen übertragen werden:
+Mit Hilfe der Erreichbarkeit können die Definitionen zu dem \textit{jeder-weiß}- und dem \textit{gemeinsames Wissen}-Operator auf diese Graphen übertragen werden:
 \begin{itemize}
 	\item Ein Zustand t kann vom Zustand s in k Schritten erreicht werden (ist k-erreichbar), wenn es eine Folge von Zuständen $s_0,s_1,...,s_k$ gibt, wobei $s_0 = s$, $s_k = t$ mit einem Zustand $P_i$ zu jedem $j\in [ 0,k-1 ]$, sodass $(s_j,s_{j+1})\in \mathcal{K}_i$
 	\item Ein Zustand t ist vom Zustand s aus erreichbar, wenn es ein beliebiges $k \ge 0$\footnote{\label{note1}In \cite{kshemkalyani2011distributed} S. 286 wird dies für ein $k > 1$ definiert. Zum Ende dieses Kapitels wird auf den Unterschied der beiden Definitionen eingegangen.} gibt, sodass t von s in k Schritten erreicht werden kann.
@@ -144,7 +144,7 @@ Da jede Ehefrau in unserem Fall mindestens einen untreuen Ehemann kennt, geschie
 \end{figure}
 
 Da in der ersten Nacht kein Schuss zu hören war, ist es nun gemeinsames Wissen, dass es mindestens zwei untreue Ehemänner gibt.
-Die zweite und dritte Ehefrau wissen nur von einem untreuen Ehemann und können somit schlussfolgern, dass sie selbst betrogen wurden. Da sie wissen, welche der anderen Ehefrauen betrogen wurden sind wissen sogar, dass (0,1,1), der wahre Systemzustand ist. Beide Ehefrauen erschießen ihren Ehemann, sodass am nächsten Tag auch die erste Ehefrau den korrekten Zustand kennt.
+Die zweite und dritte Ehefrau wissen nur von einem untreuen Ehemann und können somit schlussfolgern, dass sie selbst betrogen wurden. Da sie wissen, welche der anderen Ehefrauen betrogen worden sind, wissen sie sogar, dass (0,1,1), der wahre Systemzustand ist. Beide Ehefrauen erschießen ihren Ehemann, sodass am nächsten Tag auch die erste Ehefrau den korrekten Zustand kennt.
 
 \subsubsection{Visualisierung der Wissensoperatoren}
 Um die Äquivalenz der Definitionen für den \textit{jeder weiß}- und den \textit{gemeinsames Wissen}-Operator aufzuzeigen, betrachten wir noch einmal die Ausgangssituation des \textit{cheating husbands}-Rätsels. 
@@ -159,12 +159,12 @@ Im Zustand (0,1,1) weiß somit beispielsweise die dritte Ehefrau nicht, ob die z
 Obwohl jede Ehefrau weiß, dass es mindestens einen untreuen Ehemann gibt, ist diese Information kein gemeinsames Wissen.
 Somit gilt in der Ausgangssituation nicht $C(\Phi)$, der Induktionsanfang aus \ref{motivation} greift somit nicht, und es kann nie ein Ehemann erschossen werden.\\
 
-Diese Überlegungen können mit Hilfe der Definitionen zu den \textit{jeder weiß}- und den gemeinsames Wissen-Operator, die k-Erreichbarkeit ausnutzen, leicht am Graphen verifiziert werden.
+Diese Überlegungen können mit Hilfe der Definitionen vom \textit{jeder weiß}- und dem gemeinsames Wissen-Operator, welche beide die k-Erreichbarkeit ausnutzen, leicht am Graphen verifiziert werden.
 In jedem Zustand der von (0,1,1) in einem oder keinem Schritt erreichbar ist, gibt es mindestens einen untreuen Ehemann. In zwei Schritten ist allerdings (0,0,0) erreichbar. Somit gilt $E^1(\Phi)$, nicht aber $E^2(\Phi)$, also auch nicht $C(\Phi)$.\medskip
 
 An dieser Stelle können wir kurz betrachten, warum die Zusätze $^1$ und $^2$ zu den Definitionen von \cite{kshemkalyani2011distributed} sinnvoll sind:
 \begin{itemize}
-	\item Wird (M,s) $\vDash E^{k}(\phi)$ ohne den Zusatz \glqq oder weniger\grqq{} definiert, könnte man denken, dass im Zustand (0,0,0) $E^1(\Phi)$ gilt, denn in allen Zuständen, die in genau einem Schritt erreichbar sind, gilt $\Phi$. Diese Eigenschaft gilt allerdings offensichtlich nicht, denn jede der drei Ehefrauen hält in diesem Zustand auch den Zustand (0,0,0) selbst für möglich und ihn diesem gibt es keinen einzigen untreuen Ehemann.
+	\item Wird (M,s) $\vDash E^{k}(\phi)$ ohne den Zusatz \glqq oder weniger\grqq{} definiert, könnte man denken, dass im Zustand (0,0,0) $E^1(\Phi)$ gilt, denn in allen Zuständen, die in genau einem Schritt erreichbar sind, gilt $\Phi$. Diese Eigenschaft gilt allerdings offensichtlich nicht, denn jede der drei Ehefrauen hält in diesem Zustand auch den Zustand (0,0,0) selbst für möglich und in diesem gibt es keinen einzigen untreuen Ehemann.
 	Technisch gesehen ist (0,0,0) auch in einem Schritt von (0,0,0) erreichbar, denn es existiert eine Folge von Zuständen $s_0$ und $s_1$, wobei $s_0$ = (0,0,0) und $s_1$ = (0,0,0), die für jedes $P_i$ in $\mathcal{K}_i$ enthalten sind.
 	Somit ist die Definition aus der Literatur korrekt. Mit dem von uns eingefügten Zusatz wird diese allerdings intuitiver verständlich.
 	\item Wird die generelle Erreichbarkeit mit $k > 1$, also $k \ge 2$, statt $k \ge 0$ definiert, gibt es ebenso Situationen in denen unintuitive Zustandsfolgen mit dem selben Zustand genutzt werden müssen, um die Eigenschaften aufzuzeigen.
